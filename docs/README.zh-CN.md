@@ -24,9 +24,12 @@ python -m react_m compare --repeats 5 --output results/local/mechanics.json
 
 ```sh
 python -m react_m evaluate --output results/local/live.json
+python -m react_m ask "Nicholas Ray 和 Elia Kazan 有哪些共同的职业？"
 ```
 
 支持通过 OPENAI_BASE_URL 配置兼容 Chat Completions 的接口，通过 REACT_M_API_KEY 覆盖密钥。模型名称需要自行指定；不支持 JSON-object 模式的接口可使用 --no-json-mode。接口需支持 max_completion_tokens。此命令可能产生 API 费用，请勿提交密钥或私有输出。
+
+ask 命令使用只读 Wikipedia 搜索与页面读取工具处理自定义问题，并在轨迹中保留来源链接；它需要联网。页面采用明确的 ID，较长正文会标注截断，接口不同于原版的共享当前页面。完整问答效果仍需实际模型接入后验证。
 
 ## 如何看待这个思路
 

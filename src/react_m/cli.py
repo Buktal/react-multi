@@ -4,11 +4,15 @@ import argparse
 import asyncio
 import json
 import os
+import sys
 from pathlib import Path
 from typing import Any
 
+from .agent import Agent
+from .engine import Engine
 from .experiments import MODES, compare, load_tasks, run_case, summarize
 from .providers import ChatCompletionsReasoner
+from .wikipedia import wikipedia_tools
 
 
 def _save(report: dict[str, Any], output: str | None) -> None:
@@ -48,6 +52,16 @@ async def _run(args: argparse.Namespace) -> int:
     api_key = os.environ.get("REACT_M_API_KEY") or os.environ.get("OPENAI_API_KEY", "")
     if args.base_url.rstrip("/") == "https://api.openai.com/v1" and not api_key:
         raise ValueError("Set OPENAI_API_KEY locally, or configure a compatible endpoint")
+    if args.command == "ask":
+        reasoner = ChatCompletionsReasoner(
+            args.model, api_key=api_key, base_url=args.base_url, json_mode=not args.no_json_mode
+        )
+        report = await Agent(Engine(wikipedia_tools(), timeout=60), reasoner, mode=args.mode).run(
+            args.question + " Cite the source URLs you used."
+        )
+        print(json.dumps(report, indent=2, ensure_ascii=False))
+        _save(report, args.output)
+        return 0 if report["status"] in {"finished", "needs_input"} else 1
     if args.repeats < 1:
         raise ValueError("repeats must be positive")
     report = {
@@ -68,6 +82,9 @@ async def _run(args: argparse.Namespace) -> int:
                 run = await run_case(case["id"], mode, tool_delay=0, reasoner=reasoner)
                 report["runs"].append(run)
                 _save(report, args.output)
+                if run["status"] == "provider_error":
+                    print(run["error"])
+                    return 1
     report["summary"] = summarize(report["runs"])
     print(report["warning"])
     _table(report["summary"])
@@ -76,6 +93,9 @@ async def _run(args: argparse.Namespace) -> int:
 
 
 def main() -> None:
+    for stream in (sys.stdout, sys.stderr):
+        if hasattr(stream, "reconfigure"):
+            stream.reconfigure(encoding="utf-8")
     parser = argparse.ArgumentParser(description="ReAct-M research examples")
     commands = parser.add_subparsers(dest="command", required=True)
     demo = commands.add_parser("demo", help="Run a labeled offline scripted example")
@@ -92,11 +112,16 @@ def main() -> None:
     evaluate = commands.add_parser(
         "evaluate", help="Evaluate all modes using a configured real model"
     )
-    evaluate.add_argument("--model", default=os.environ.get("OPENAI_MODEL"))
-    evaluate.add_argument(
-        "--base-url", default=os.environ.get("OPENAI_BASE_URL", "https://api.openai.com/v1")
-    )
-    evaluate.add_argument("--no-json-mode", action="store_true")
+    ask = commands.add_parser("ask", help="Ask a real model a question using live Wikipedia tools")
+    ask.add_argument("question")
+    ask.add_argument("--mode", choices=MODES, default="multi")
+    ask.add_argument("--output", default="results/local/question.json")
+    for command in (evaluate, ask):
+        command.add_argument("--model", default=os.environ.get("OPENAI_MODEL"))
+        command.add_argument(
+            "--base-url", default=os.environ.get("OPENAI_BASE_URL", "https://api.openai.com/v1")
+        )
+        command.add_argument("--no-json-mode", action="store_true")
     evaluate.add_argument("--repeats", type=int, default=1)
     evaluate.add_argument("--output", default="results/local/live.json")
     args = parser.parse_args()

@@ -85,6 +85,14 @@ For another compatible endpoint, set `OPENAI_BASE_URL` to its API base URL (usua
 
 The evaluation runs all three modes on the same four tiny fixtures. It can incur API charges. Raw traces and reported usage are saved, including failures. These fixtures are smoke tests, not HotpotQA/FEVER/ALFWorld/WebShop reproductions.
 
+For a custom question with live Wikipedia evidence:
+
+~~~sh
+python -m react_m ask "What professions did Nicholas Ray and Elia Kazan have in common?"
+~~~
+
+This uses the same model configuration and read-only Wikipedia search/read tools, returning source URLs in the trace. It requires network access. Pages use explicit IDs and may be truncated to 12000 characters with a flag; this is a new adapter, not the original shared-state WikiEnv. An actual model endpoint is still required to validate end-to-end answers.
+
 ## Evidence and positioning
 
 | Mode | Same-round independent calls | Same-batch result bindings |
@@ -106,7 +114,7 @@ python -m mypy src/react_m
 python -m build
 ~~~
 
-See [contributing](CONTRIBUTING.md), [design](docs/DESIGN.md), [evaluation methodology](docs/EVALUATION.md), and [v0.1 scope](docs/SPEC.md).
+See [contributing](CONTRIBUTING.md), [design](docs/DESIGN.md), [evaluation methodology](docs/EVALUATION.md), [validation record](docs/VALIDATION.md), and [v0.1 scope](docs/SPEC.md).
 
 ## Acknowledgments and license
 
