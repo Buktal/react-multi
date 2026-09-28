@@ -12,3 +12,21 @@ dist/
 !.env.example
 results/local/
 .ipynb_checkpoints/
+
+# Local development notes and agent settings
+/docs/
+/CONTEXT.md
+/AGENTS.md
+/CLAUDE.md
+/.agents/
+/.codex/
+/notes/
+/scratch/
+
+# Editor settings and temporary files
+/.idea/
+/.vscode/
+*.log
+*.tmp
+.DS_Store
+Thumbs.db

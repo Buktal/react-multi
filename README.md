@@ -1,21 +1,29 @@
 # ReAct-M
 
-**Reasoning and acting with multiple actions.** A small Python research implementation inspired by [ReAct](https://github.com/ysymyth/ReAct).
+**Reasoning and acting with multiple actions.**
 
-[中文说明](docs/README.zh-CN.md) · [Notebook](ReAct-M.ipynb) · [Protocol](docs/PROTOCOL.md) · [Related work](docs/RELATED_WORK.md)
+[中文](README.zh-CN.md) · [Notebook](ReAct-M.ipynb)
 
-ReAct-M extends the action in a ReAct loop into a batch. Independent actions can run concurrently; dependent actions can use explicitly referenced results without another model request. When new observations require a new decision, the next reasoning round handles it.
+ReAct-M is a Python implementation of a multi-action ReAct loop. Each reasoning round can produce a batch of tool calls: independent actions run concurrently, while dependent actions receive values from earlier results. The collected observations feed the next reasoning round.
 
 ~~~text
-Reason → [search A ─→ read A
-          search B ─→ read B] → Observations → Reason
+                   ┌─ search A → read A ─┐
+Task → Reasoning ──┤                    ├─ Observations → Reasoning → Answer
+                   └─ search B → read B ─┘
 ~~~
 
-This repository provides an installable implementation, offline examples, a configurable real-model adapter, tests, and three comparison modes. It is an early research implementation, not a production workflow platform.
+## Features
+
+- **Action batches** with explicit dependencies and JSON result references.
+- **Concurrent execution** with configurable limits and shared-resource ordering.
+- **Iterative reasoning** when new information requires another decision.
+- **Failure handling** with partial results, blocked dependents, timeouts and safe retries.
+- **Model integration** through a configurable Chat Completions-compatible endpoint.
+- **Wikipedia tools**, offline examples and three execution modes for comparison.
 
 ## Quick start
 
-Requires Python 3.11 or newer. No API key is needed for the first two commands.
+Requires Python 3.11 or newer.
 
 ~~~sh
 git clone https://github.com/Buktal/ReAct-M.git
@@ -23,31 +31,42 @@ cd ReAct-M
 python -m venv .venv
 ~~~
 
-Activate with `.venv\Scripts\Activate.ps1` on PowerShell or `source .venv/bin/activate` on macOS/Linux, then:
+Activate the environment with `.venv\Scripts\Activate.ps1` in PowerShell or `source .venv/bin/activate` on macOS/Linux, then run:
 
 ~~~sh
-python -m pip install -e ".[dev]"
+python -m pip install -e .
 python -m react_m demo --scenario dependency
-python -m react_m compare --repeats 5 --output results/local/mechanics.json
 ~~~
 
-The installed `react-m` command is equivalent to `python -m react_m`. The notebook uses the same public experiment functions.
+Offline examples use scripted decisions and bundled synthetic documents, so they require no API key. Choose a scenario with `--scenario independent|dependency|ambiguous|failure`, or explore them in the [Notebook](ReAct-M.ipynb).
 
-**Offline demos use hand-authored plans and fictional documents. They are labeled scripted, make zero model requests, and are not evidence of real-model accuracy or speed.**
+The installed `react-m` command is equivalent to `python -m react_m`.
 
-## What is implemented
+## Use a model
 
-- A bounded Reason → Action Batch → Observation loop.
-- Explicit result bindings and success dependencies, validated before dispatch.
-- Bounded parallelism, shared-resource locks and required ordering for stateful tools.
-- Exactly-one candidate selection: ambiguity returns to reasoning instead of silently choosing.
-- Partial results, branch failure isolation, finite retries for explicitly safe reads, and conservative unknown-outcome handling.
-- Single-action, independent-parallel and dependency-aware multi-action modes.
-- A Chat Completions-compatible adapter with configurable model/endpoint and token accounting.
+Set your API key and model name. For example, in PowerShell:
 
-Jev remains an optional future routing adapter. The initial implementation exposes the full small tool catalog; no trained router is included.
+~~~powershell
+$env:OPENAI_API_KEY = "your-key"
+$env:OPENAI_MODEL = "your-model-id"
+python -m react_m ask "What professions did Nicholas Ray and Elia Kazan have in common?"
+~~~
 
-## A batch with a data dependency
+The `ask` command searches and reads Wikipedia, keeps source URLs in the execution trace, and saves the result to `results/local/question.json`.
+
+| Setting | Purpose |
+| --- | --- |
+| `OPENAI_MODEL` or `--model` | Model identifier |
+| `OPENAI_API_KEY` | API key |
+| `OPENAI_BASE_URL` or `--base-url` | API base URL; defaults to `https://api.openai.com/v1` |
+| `REACT_M_API_KEY` | Optional override for `OPENAI_API_KEY` |
+| `--no-json-mode` | Disable JSON-object response mode for endpoints that do not support it |
+
+The endpoint must support Chat Completions and `max_completion_tokens`. Wikipedia queries require network access.
+
+## Action batches
+
+A dependent action can bind its arguments to another action's result:
 
 ~~~json
 {
@@ -69,55 +88,80 @@ Jev remains an optional future routing adapter. The initial implementation expos
 }
 ~~~
 
-`read` receives the unique search result's ID. Zero or multiple matches produce `needs_reasoning`; the model can ask for clarification in the next round. See [the complete protocol](docs/PROTOCOL.md).
+Here, `read` receives the unique search result's ID. If the search returns zero or multiple matches, `select: only` produces `needs_reasoning` so the next round can handle the ambiguity.
 
-## Run a real model
+| Action field | Meaning |
+| --- | --- |
+| `id`, `tool` | Unique action ID and registered tool name |
+| `args` | Literal arguments |
+| `bindings` | Arguments taken from another action's result in the same batch |
+| `depends_on` | Actions that must succeed first, without transferring data |
 
-Configure credentials locally; never commit them. Select a model available at your endpoint explicitly. For example, in PowerShell:
+Bindings use RFC 6901 JSON Pointers and create dependencies automatically. The Engine validates the graph before dispatch and checks bound arguments before calling the tool. Failed or ambiguous actions block their dependents; unrelated branches can continue.
 
-~~~powershell
-$env:OPENAI_API_KEY = "your-key"
-$env:OPENAI_MODEL = "your-model-id"
+The model returns one decision object: `{"type": "execute", "actions": [...]}`, `{"type": "finish", "answer": "..."}` or `{"type": "ask_user", "question": "..."}`. Schemas are available as `react_m.agent.DECISION_SCHEMA` and `react_m.protocol.BATCH_SCHEMA`.
+
+## Python API
+
+Register async tools with their argument schemas, then execute a batch:
+
+~~~python
+import asyncio
+from react_m import Engine, Tool
+
+async def read(doc_id: str):
+    return {"id": doc_id, "year": 1892}
+
+async def main():
+    tool = Tool(
+        "read", "Read a document by ID",
+        {"type": "object", "properties": {"doc_id": {"type": "string"}},
+         "required": ["doc_id"], "additionalProperties": False},
+        read, retry_safe=True,
+    )
+    report = await Engine([tool]).execute(
+        {"actions": [{"id": "a", "tool": "read", "args": {"doc_id": "alder"}}]}
+    )
+    print(report)
+
+asyncio.run(main())
+~~~
+
+`Agent(engine, reasoner).run(task)` adds the reasoning loop. `ChatCompletionsReasoner` from `react_m.providers` connects it to a model; `ScriptedReasoner` supplies fixed decisions for examples.
+
+Tools return JSON-serializable values and must cooperate with async cancellation. Tool settings control `timeout`, `retries`, `retry_safe`, `read_only` and shared `resource` access. Set `ordered=True` for resources requiring explicit dependency order. Retries are limited to explicitly repeatable read operations; external writes cannot automatically retry. An unresolved outcome produces `outcome_unknown` and stops further dispatch. The host must reconcile the external state before creating a new Engine.
+
+Defaults are 32 actions per batch, four concurrent tools, a 30-second batch timeout, and eight reasoning rounds. Parameters passed to `Engine`, `Tool` and `Agent` configure execution limits; the batch schema fixes the action limit.
+
+## Compare execution modes
+
+| Mode | Actions per round | Same-batch result bindings |
+| --- | --- | --- |
+| `single` | One | No |
+| `parallel` | Multiple independent actions | No |
+| `multi` | Multiple independent or dependent actions | Yes |
+
+Run the offline comparison or evaluate the same cases with your configured model:
+
+~~~sh
+python -m react_m compare --repeats 5 --output results/local/mechanics.json
 python -m react_m evaluate --output results/local/live.json
 ~~~
 
-For another compatible endpoint, set `OPENAI_BASE_URL` to its API base URL (usually ending in `/v1`). `REACT_M_API_KEY` overrides `OPENAI_API_KEY`. Use `--no-json-mode` if the endpoint does not support JSON-object response mode. The adapter sends `max_completion_tokens`; endpoints must support this parameter.
+`compare` measures scripted execution with configurable delays. `evaluate` records model responses, tool calls, token usage when available, and outcomes on the same four fixtures. Independent reads test concurrency; search-then-read tests parameter transfer; ambiguity and missing evidence test clarification.
 
-The evaluation runs all three modes on the same four tiny fixtures. It can incur API charges. Raw traces and reported usage are saved, including failures. These fixtures are smoke tests, not HotpotQA/FEVER/ALFWorld/WebShop reproductions.
+The [sample results](results/README.md) demonstrate execution mechanics. Their success rates describe expected fixture behavior; real-model speed and answer quality require model-based measurements. Batching can reduce mechanical reasoning rounds, while larger batches may add unnecessary calls or delay feedback.
 
-For a custom question with live Wikipedia evidence:
+## Contributing
 
-~~~sh
-python -m react_m ask "What professions did Nicholas Ray and Elia Kazan have in common?"
-~~~
+See [CONTRIBUTING.md](CONTRIBUTING.md) for setup and checks. Report bugs or propose changes in [GitHub Issues](https://github.com/Buktal/ReAct-M/issues).
 
-This uses the same model configuration and read-only Wikipedia search/read tools, returning source URLs in the trace. It requires network access. Pages use explicit IDs and may be truncated to 12000 characters with a flag; this is a new adapter, not the original shared-state WikiEnv. An actual model endpoint is still required to validate end-to-end answers.
+## Acknowledgments
 
-## Evidence and positioning
+Inspired by Yao et al., [ReAct: Synergizing Reasoning and Acting in Language Models](https://arxiv.org/abs/2210.03629), ICLR 2023. See the [original ReAct repository](https://github.com/ysymyth/ReAct).
 
-| Mode | Same-round independent calls | Same-batch result bindings |
-| --- | --- | --- |
-| Single-action | No | No |
-| Independent-parallel | Yes | No |
-| ReAct-M | Yes | Yes |
+Related approaches include [ReWOO](https://arxiv.org/abs/2305.18323), which separates planning from observation-dependent execution, and [LLMCompiler](https://arxiv.org/abs/2312.04511), which coordinates dependent tool calls with a parallel executor.
 
-The initial [mechanics experiment](results/README.md) shows the expected narrow behavior: ordinary parallel execution already captures independent-query gains; a deterministic dependency can remove an intermediate decision; ambiguity and failures still require handling.
+## License
 
-**No live-model benchmark result has been established for this release.** ReWOO and LLMCompiler already cover closely related planning and execution ideas. This project makes no claim to invent parallel tool calling, introduce a new reasoning paradigm, or outperform those systems. Read [related work and claim boundaries](docs/RELATED_WORK.md).
-
-## Development
-
-~~~sh
-python -m pytest
-python -m ruff check .
-python -m mypy src/react_m
-python -m build
-~~~
-
-See [contributing](CONTRIBUTING.md), [design](docs/DESIGN.md), [evaluation methodology](docs/EVALUATION.md), [validation record](docs/VALIDATION.md), and [v0.1 scope](docs/SPEC.md).
-
-## Acknowledgments and license
-
-Inspired by Yao et al., **ReAct: Synergizing Reasoning and Acting in Language Models**, ICLR 2023 ([paper](https://arxiv.org/abs/2210.03629), [original code](https://github.com/ysymyth/ReAct)). This implementation and its fictional fixtures are independently written; no original dataset or notebook code is bundled. It is not affiliated with the ReAct authors or the React JavaScript framework.
-
-MIT — see [LICENSE](LICENSE).
+[MIT](LICENSE).

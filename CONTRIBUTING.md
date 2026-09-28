@@ -11,10 +11,10 @@ python -m mypy src/react_m
 python -m build
 ```
 
-Tests cross public interfaces: `Engine.execute`, `Agent.run`, the HTTP model adapter, and experiment/CLI entry points. Use controlled async tools and HTTP transports; tests must not require API keys, external websites, datasets or paid calls. Test outcomes and observable behavior rather than private scheduling methods.
+Tests cover the Engine, Agent, model adapter and CLI using local fixtures and mock HTTP transports. They run without API keys or network access. CI runs these checks on Windows and Linux with Python 3.11 and 3.13.
 
-Keep this a small research implementation. Prefer explicit data flow and a few public interfaces over a plugin framework. Public code is typed; explain semantic changes in `docs/PROTOCOL.md`. Add regression tests for correctness changes, especially dependency validation, cancellation, resource ordering and tool side effects.
+For a bug fix, include a regression test that exercises the affected public behavior. Update the English and Chinese READMEs when changing the API or CLI.
 
-Benchmark changes must preserve comparable tasks, tool interfaces and budgets across modes. Label scripted runs, retain failures, and never claim a performance or novelty result that has not been measured. See `docs/RELATED_WORK.md` and `docs/EVALUATION.md`.
+When contributing experiments, include the configuration and outcomes, identify scripted or model-based runs, and use comparable tasks, tools and budgets across modes.
 
 Use GitHub issues for bugs and proposals. Do not attach credentials, private prompts or sensitive tool outputs. The MIT license covers original contributions; preserve upstream notices for any code introduced from other projects.

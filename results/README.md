@@ -29,4 +29,4 @@ The independent case shows why ordinary parallel calling is an essential baselin
 
 The success column means the fixture produced its expected answer or clarification state. It is not a language-model accuracy score. No significance or generalization claim can be made from this small controlled sample.
 
-Full configuration and all 60 traces: [mechanics.json](mechanics.json). Real-model results are currently unavailable; the evaluate command saves them under the ignored results/local directory when credentials are configured.
+Full configuration and all 60 traces: [mechanics.json](mechanics.json). Use `python -m react_m evaluate` for model-based runs; its output defaults to `results/local/live.json`.
