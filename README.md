@@ -1,5 +1,10 @@
 # ReAct-M
 
+[![Tests](https://github.com/Buktal/ReAct-M/actions/workflows/tests.yml/badge.svg)](https://github.com/Buktal/ReAct-M/actions/workflows/tests.yml)
+[![Release](https://img.shields.io/github/v/release/Buktal/ReAct-M)](https://github.com/Buktal/ReAct-M/releases)
+[![Python](https://img.shields.io/badge/python-%3E%3D3.11-blue)](https://www.python.org/downloads/)
+[![License: MIT](https://img.shields.io/badge/license-MIT-green)](LICENSE)
+
 **Reasoning and acting with multiple actions.**
 
 [中文](README.zh-CN.md) · [Notebook](ReAct-M.ipynb)
@@ -24,6 +29,15 @@ Task → Reasoning ──┤                    ├─ Observations → Reasonin
 ## Quick start
 
 Requires Python 3.11 or newer.
+
+Install the versioned package from [GitHub Releases](https://github.com/Buktal/ReAct-M/releases):
+
+~~~sh
+python -m pip install https://github.com/Buktal/ReAct-M/releases/download/v0.1.0/react_m-0.1.0-py3-none-any.whl
+python -m react_m demo --scenario dependency
+~~~
+
+To explore the notebook or work with the source:
 
 ~~~sh
 git clone https://github.com/Buktal/ReAct-M.git
@@ -154,7 +168,9 @@ The [sample results](results/README.md) demonstrate execution mechanics. Their s
 
 ## Contributing
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for setup and checks. Report bugs or propose changes in [GitHub Issues](https://github.com/Buktal/ReAct-M/issues).
+See [CONTRIBUTING.md](CONTRIBUTING.md) for setup and checks. Use [GitHub Issues](https://github.com/Buktal/ReAct-M/issues/new/choose) for bugs, feature requests and usage questions. Participants follow the [code of conduct](CODE_OF_CONDUCT.md).
+
+Report vulnerabilities through the private channel in [SECURITY.md](SECURITY.md). Version changes are listed in the [changelog](CHANGELOG.md).
 
 ## Acknowledgments
 

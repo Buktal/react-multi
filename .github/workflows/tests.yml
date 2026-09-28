@@ -2,11 +2,16 @@ name: tests
 on:
   push:
   pull_request:
+  workflow_dispatch:
 permissions:
   contents: read
+concurrency:
+  group: tests-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 jobs:
   test:
     runs-on: ${{ matrix.os }}
+    timeout-minutes: 15
     strategy:
       fail-fast: false
       matrix:
@@ -17,9 +22,15 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python }}
-      - run: python -m pip install -e ".[dev]"
-      - run: python -m pytest
-      - run: python -m ruff check .
-      - run: python -m mypy src/react_m
-      - run: python -m build
-      - run: python -m react_m compare --repeats 1 --tool-delay 0 --decision-delay 0
+      - name: Install
+        run: python -m pip install -e ".[dev]"
+      - name: Test
+        run: python -m pytest
+      - name: Lint
+        run: python -m ruff check .
+      - name: Type check
+        run: python -m mypy src/react_m
+      - name: Build packages
+        run: python -m build
+      - name: Run offline comparison
+        run: python -m react_m compare --repeats 1 --tool-delay 0 --decision-delay 0

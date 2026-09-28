@@ -1,0 +1,23 @@
+name: Feature request
+description: Propose an improvement to the runtime, tools or examples.
+labels: [enhancement]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Use case
+      description: What task is difficult with the current implementation?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed behavior
+      description: Describe the API, command or example you would like to use.
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives and examples
+      description: Include workarounds, related approaches or a concrete example, if available.

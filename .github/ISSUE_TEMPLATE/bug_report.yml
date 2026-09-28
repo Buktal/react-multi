@@ -1,0 +1,45 @@
+name: Bug report
+description: Report a reproducible problem with ReAct-M.
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        For vulnerabilities, use the private security report link instead of a public issue.
+        Remove API keys and private data from examples and logs.
+  - type: input
+    id: version
+    attributes:
+      label: ReAct-M version
+      description: Release version or commit SHA.
+      placeholder: v0.1.0
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Environment
+      description: Operating system and Python version; model and provider if relevant.
+      placeholder: Ubuntu 24.04, Python 3.13, offline demo
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps to reproduce
+      description: Include the smallest command or Python example that reproduces the problem.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+      description: Include relevant errors or a sanitized execution trace.
+    validations:
+      required: true

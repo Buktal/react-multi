@@ -1,5 +1,10 @@
 # ReAct-M
 
+[![Tests](https://github.com/Buktal/ReAct-M/actions/workflows/tests.yml/badge.svg)](https://github.com/Buktal/ReAct-M/actions/workflows/tests.yml)
+[![Release](https://img.shields.io/github/v/release/Buktal/ReAct-M)](https://github.com/Buktal/ReAct-M/releases)
+[![Python](https://img.shields.io/badge/python-%3E%3D3.11-blue)](https://www.python.org/downloads/)
+[![License: MIT](https://img.shields.io/badge/license-MIT-green)](LICENSE)
+
 **每轮推理，执行多个动作。**
 
 [English](README.md) · [Notebook](ReAct-M.ipynb)
@@ -24,6 +29,15 @@ ReAct-M 是一个支持多动作批次的 Python ReAct 实现。每轮推理可�
 ## 快速开始
 
 需要 Python 3.11 或更新版本。
+
+从 [GitHub Releases](https://github.com/Buktal/ReAct-M/releases) 安装已发布版本：
+
+~~~sh
+python -m pip install https://github.com/Buktal/ReAct-M/releases/download/v0.1.0/react_m-0.1.0-py3-none-any.whl
+python -m react_m demo --scenario dependency
+~~~
+
+如需使用 Notebook 或查看源码：
 
 ~~~sh
 git clone https://github.com/Buktal/ReAct-M.git
@@ -154,7 +168,9 @@ python -m react_m evaluate --output results/local/live.json
 
 ## 参与贡献
 
-开发环境与检查命令见 [CONTRIBUTING.md](CONTRIBUTING.md)。问题反馈和改进建议可提交到 [GitHub Issues](https://github.com/Buktal/ReAct-M/issues)。
+开发环境与检查命令见 [CONTRIBUTING.md](CONTRIBUTING.md)。Bug、功能建议和使用问题可提交到 [GitHub Issues](https://github.com/Buktal/ReAct-M/issues/new/choose)。参与者须遵守[行为准则](CODE_OF_CONDUCT.md)。
+
+安全漏洞请通过 [SECURITY.md](SECURITY.md) 中的私密渠道报告。版本变化见[更新日志](CHANGELOG.md)。
 
 ## 致谢
 
