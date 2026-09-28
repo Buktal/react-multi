@@ -1,0 +1,12 @@
+{
+  "alder": {
+    "title": "Alder Observatory",
+    "opened": 1892,
+    "text": "Alder Observatory is a fictional observatory used in this repository's fixtures. It opened in 1892."
+  },
+  "birch": {
+    "title": "Birch Observatory",
+    "opened": 1910,
+    "text": "Birch Observatory is a fictional observatory used in this repository's fixtures. It opened in 1910."
+  }
+}

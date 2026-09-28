@@ -1,0 +1,24 @@
+[
+  {
+    "id": "independent",
+    "task": "Read documents with IDs alder and birch. Which observatory opened earlier? Answer with its exact title only.",
+    "expected_status": "finished",
+    "expected_answer": "Alder Observatory"
+  },
+  {
+    "id": "dependency",
+    "task": "Search for the exact title Alder Observatory, read the unique matching document, and report its opening year. Answer with the year only.",
+    "expected_status": "finished",
+    "expected_answer": "1892"
+  },
+  {
+    "id": "ambiguous",
+    "task": "Search for Observatory and read the result to tell me when it opened. I have not specified which observatory I mean; ask me to clarify if the search has multiple matches.",
+    "expected_status": "needs_input"
+  },
+  {
+    "id": "failure",
+    "task": "Read document ID missing and tell me its opening year. If that document is unavailable, ask me for a valid document ID instead of guessing.",
+    "expected_status": "needs_input"
+  }
+]

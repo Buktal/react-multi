@@ -1,0 +1,4067 @@
+{
+  "kind": "scripted-mechanics",
+  "created_at": "2026-09-28T11:13:40.459069+00:00",
+  "python": "3.13.15",
+  "platform": "Windows",
+  "configuration": {
+    "repeats": 5,
+    "tool_delay_s": 0.02,
+    "decision_delay_s": 0.01,
+    "seed": 0
+  },
+  "warning": "Hand-authored plans and simulated delays; not a live-model benchmark.",
+  "summary": [
+    {
+      "scenario": "independent",
+      "mode": "single",
+      "runs": 5,
+      "success_rate": 1.0,
+      "median_elapsed_s": 0.1077433000318706,
+      "mean_decisions": 3,
+      "mean_model_calls": 0,
+      "mean_tool_attempts": 2
+    },
+    {
+      "scenario": "independent",
+      "mode": "parallel",
+      "runs": 5,
+      "success_rate": 1.0,
+      "median_elapsed_s": 0.06024889997206628,
+      "mean_decisions": 2,
+      "mean_model_calls": 0,
+      "mean_tool_attempts": 2
+    },
+    {
+      "scenario": "independent",
+      "mode": "multi",
+      "runs": 5,
+      "success_rate": 1.0,
+      "median_elapsed_s": 0.06104079994838685,
+      "mean_decisions": 2,
+      "mean_model_calls": 0,
+      "mean_tool_attempts": 2
+    },
+    {
+      "scenario": "dependency",
+      "mode": "single",
+      "runs": 5,
+      "success_rate": 1.0,
+      "median_elapsed_s": 0.107608100050129,
+      "mean_decisions": 3,
+      "mean_model_calls": 0,
+      "mean_tool_attempts": 2
+    },
+    {
+      "scenario": "dependency",
+      "mode": "parallel",
+      "runs": 5,
+      "success_rate": 1.0,
+      "median_elapsed_s": 0.10746800003107637,
+      "mean_decisions": 3,
+      "mean_model_calls": 0,
+      "mean_tool_attempts": 2
+    },
+    {
+      "scenario": "dependency",
+      "mode": "multi",
+      "runs": 5,
+      "success_rate": 1.0,
+      "median_elapsed_s": 0.09164779994171113,
+      "mean_decisions": 2,
+      "mean_model_calls": 0,
+      "mean_tool_attempts": 2
+    },
+    {
+      "scenario": "ambiguous",
+      "mode": "single",
+      "runs": 5,
+      "success_rate": 1.0,
+      "median_elapsed_s": 0.06072359997779131,
+      "mean_decisions": 2,
+      "mean_model_calls": 0,
+      "mean_tool_attempts": 1
+    },
+    {
+      "scenario": "ambiguous",
+      "mode": "parallel",
+      "runs": 5,
+      "success_rate": 1.0,
+      "median_elapsed_s": 0.0601176000200212,
+      "mean_decisions": 2,
+      "mean_model_calls": 0,
+      "mean_tool_attempts": 1
+    },
+    {
+      "scenario": "ambiguous",
+      "mode": "multi",
+      "runs": 5,
+      "success_rate": 1.0,
+      "median_elapsed_s": 0.06054020009469241,
+      "mean_decisions": 2,
+      "mean_model_calls": 0,
+      "mean_tool_attempts": 1
+    },
+    {
+      "scenario": "failure",
+      "mode": "single",
+      "runs": 5,
+      "success_rate": 1.0,
+      "median_elapsed_s": 0.05971020006109029,
+      "mean_decisions": 2,
+      "mean_model_calls": 0,
+      "mean_tool_attempts": 1
+    },
+    {
+      "scenario": "failure",
+      "mode": "parallel",
+      "runs": 5,
+      "success_rate": 1.0,
+      "median_elapsed_s": 0.05969649995677173,
+      "mean_decisions": 2,
+      "mean_model_calls": 0,
+      "mean_tool_attempts": 1
+    },
+    {
+      "scenario": "failure",
+      "mode": "multi",
+      "runs": 5,
+      "success_rate": 1.0,
+      "median_elapsed_s": 0.05924009997397661,
+      "mean_decisions": 2,
+      "mean_model_calls": 0,
+      "mean_tool_attempts": 1
+    }
+  ],
+  "runs": [
+    {
+      "status": "finished",
+      "answer": "Alder Observatory",
+      "mode": "single",
+      "backend": "scripted",
+      "decision_calls": 3,
+      "model_calls": 0,
+      "tool_attempts": 2,
+      "input_tokens": null,
+      "output_tokens": null,
+      "usage_complete": true,
+      "history": [
+        {
+          "decision": {
+            "type": "execute",
+            "actions": [
+              {
+                "id": "a",
+                "tool": "read",
+                "args": {
+                  "doc_id": "alder"
+                }
+              }
+            ]
+          },
+          "observation": {
+            "status": "complete",
+            "results": [
+              {
+                "id": "a",
+                "status": "succeeded",
+                "attempts": 1,
+                "elapsed_s": 0.030435799970291555,
+                "output": {
+                  "title": "Alder Observatory",
+                  "opened": 1892,
+                  "text": "Alder Observatory is a fictional observatory used in this repository's fixtures. It opened in 1892."
+                }
+              }
+            ],
+            "elapsed_s": 0.030683399992994964,
+            "tool_attempts": 1
+          }
+        },
+        {
+          "decision": {
+            "type": "execute",
+            "actions": [
+              {
+                "id": "b",
+                "tool": "read",
+                "args": {
+                  "doc_id": "birch"
+                }
+              }
+            ]
+          },
+          "observation": {
+            "status": "complete",
+            "results": [
+              {
+                "id": "b",
+                "status": "succeeded",
+                "attempts": 1,
+                "elapsed_s": 0.03190449997782707,
+                "output": {
+                  "title": "Birch Observatory",
+                  "opened": 1910,
+                  "text": "Birch Observatory is a fictional observatory used in this repository's fixtures. It opened in 1910."
+                }
+              }
+            ],
+            "elapsed_s": 0.032185199903324246,
+            "tool_attempts": 1
+          }
+        }
+      ],
+      "elapsed_s": 0.11369459994602948,
+      "scenario": "independent",
+      "success": true
+    },
+    {
+      "status": "needs_input",
+      "answer": null,
+      "mode": "single",
+      "backend": "scripted",
+      "decision_calls": 2,
+      "model_calls": 0,
+      "tool_attempts": 1,
+      "input_tokens": null,
+      "output_tokens": null,
+      "usage_complete": true,
+      "history": [
+        {
+          "decision": {
+            "type": "execute",
+            "actions": [
+              {
+                "id": "read",
+                "tool": "read",
+                "args": {
+                  "doc_id": "missing"
+                }
+              }
+            ]
+          },
+          "observation": {
+            "status": "partial",
+            "results": [
+              {
+                "id": "read",
+                "status": "failed",
+                "attempts": 1,
+                "elapsed_s": 0.031055500032380223,
+                "error": "Document 'missing' does not exist"
+              }
+            ],
+            "elapsed_s": 0.03129030007403344,
+            "tool_attempts": 1
+          }
+        }
+      ],
+      "question": "Please provide a valid document ID.",
+      "elapsed_s": 0.059337700018659234,
+      "scenario": "failure",
+      "success": true
+    },
+    {
+      "status": "finished",
+      "answer": "1892",
+      "mode": "multi",
+      "backend": "scripted",
+      "decision_calls": 2,
+      "model_calls": 0,
+      "tool_attempts": 2,
+      "input_tokens": null,
+      "output_tokens": null,
+      "usage_complete": true,
+      "history": [
+        {
+          "decision": {
+            "type": "execute",
+            "actions": [
+              {
+                "id": "search",
+                "tool": "search",
+                "args": {
+                  "query": "Alder Observatory"
+                }
+              },
+              {
+                "id": "read",
+                "tool": "read",
+                "bindings": {
+                  "doc_id": {
+                    "action": "search",
+                    "pointer": "/matches",
+                    "select": "only",
+                    "project": "/id"
+                  }
+                }
+              }
+            ]
+          },
+          "observation": {
+            "status": "complete",
+            "results": [
+              {
+                "id": "search",
+                "status": "succeeded",
+                "attempts": 1,
+                "elapsed_s": 0.03201610001269728,
+                "output": {
+                  "matches": [
+                    {
+                      "id": "alder",
+                      "title": "Alder Observatory"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "read",
+                "status": "succeeded",
+                "attempts": 1,
+                "elapsed_s": 0.06232339993584901,
+                "output": {
+                  "title": "Alder Observatory",
+                  "opened": 1892,
+                  "text": "Alder Observatory is a fictional observatory used in this repository's fixtures. It opened in 1892."
+                }
+              }
+            ],
+            "elapsed_s": 0.06271089997608215,
+            "tool_attempts": 2
+          }
+        }
+      ],
+      "elapsed_s": 0.09205159998964518,
+      "scenario": "dependency",
+      "success": true
+    },
+    {
+      "status": "finished",
+      "answer": "Alder Observatory",
+      "mode": "single",
+      "backend": "scripted",
+      "decision_calls": 3,
+      "model_calls": 0,
+      "tool_attempts": 2,
+      "input_tokens": null,
+      "output_tokens": null,
+      "usage_complete": true,
+      "history": [
+        {
+          "decision": {
+            "type": "execute",
+            "actions": [
+              {
+                "id": "a",
+                "tool": "read",
+                "args": {
+                  "doc_id": "alder"
+                }
+              }
+            ]
+          },
+          "observation": {
+            "status": "complete",
+            "results": [
+              {
+                "id": "a",
+                "status": "succeeded",
+                "attempts": 1,
+                "elapsed_s": 0.030725999968126416,
+                "output": {
+                  "title": "Alder Observatory",
+                  "opened": 1892,
+                  "text": "Alder Observatory is a fictional observatory used in this repository's fixtures. It opened in 1892."
+                }
+              }
+            ],
+            "elapsed_s": 0.030924600083380938,
+            "tool_attempts": 1
+          }
+        },
+        {
+          "decision": {
+            "type": "execute",
+            "actions": [
+              {
+                "id": "b",
+                "tool": "read",
+                "args": {
+                  "doc_id": "birch"
+                }
+              }
+            ]
+          },
+          "observation": {
+            "status": "complete",
+            "results": [
+              {
+                "id": "b",
+                "status": "succeeded",
+                "attempts": 1,
+                "elapsed_s": 0.03132690000347793,
+                "output": {
+                  "title": "Birch Observatory",
+                  "opened": 1910,
+                  "text": "Birch Observatory is a fictional observatory used in this repository's fixtures. It opened in 1910."
+                }
+              }
+            ],
+            "elapsed_s": 0.03155960002914071,
+            "tool_attempts": 1
+          }
+        }
+      ],
+      "elapsed_s": 0.1077433000318706,
+      "scenario": "independent",
+      "success": true
+    },
+    {
+      "status": "needs_input",
+      "answer": null,
+      "mode": "multi",
+      "backend": "scripted",
+      "decision_calls": 2,
+      "model_calls": 0,
+      "tool_attempts": 1,
+      "input_tokens": null,
+      "output_tokens": null,
+      "usage_complete": true,
+      "history": [
+        {
+          "decision": {
+            "type": "execute",
+            "actions": [
+              {
+                "id": "search",
+                "tool": "search",
+                "args": {
+                  "query": "Observatory"
+                }
+              },
+              {
+                "id": "read",
+                "tool": "read",
+                "bindings": {
+                  "doc_id": {
+                    "action": "search",
+                    "pointer": "/matches",
+                    "select": "only",
+                    "project": "/id"
+                  }
+                }
+              }
+            ]
+          },
+          "observation": {
+            "status": "partial",
+            "results": [
+              {
+                "id": "search",
+                "status": "succeeded",
+                "attempts": 1,
+                "elapsed_s": 0.022940600058063865,
+                "output": {
+                  "matches": [
+                    {
+                      "id": "alder",
+                      "title": "Alder Observatory"
+                    },
+                    {
+                      "id": "birch",
+                      "title": "Birch Observatory"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "read",
+                "status": "needs_reasoning",
+                "attempts": 0,
+                "elapsed_s": 0.022927999962121248,
+                "error": "Expected exactly one candidate, received 2"
+              }
+            ],
+            "elapsed_s": 0.031053600017912686,
+            "tool_attempts": 1
+          }
+        }
+      ],
+      "question": "Which observatory do you mean?",
+      "elapsed_s": 0.06114969996269792,
+      "scenario": "ambiguous",
+      "success": true
+    },
+    {
+      "status": "needs_input",
+      "answer": null,
+      "mode": "single",
+      "backend": "scripted",
+      "decision_calls": 2,
+      "model_calls": 0,
+      "tool_attempts": 1,
+      "input_tokens": null,
+      "output_tokens": null,
+      "usage_complete": true,
+      "history": [
+        {
+          "decision": {
+            "type": "execute",
+            "actions": [
+              {
+                "id": "search",
+                "tool": "search",
+                "args": {
+                  "query": "Observatory"
+                }
+              }
+            ]
+          },
+          "observation": {
+            "status": "complete",
+            "results": [
+              {
+                "id": "search",
+                "status": "succeeded",
+                "attempts": 1,
+                "elapsed_s": 0.030246199923567474,
+                "output": {
+                  "matches": [
+                    {
+                      "id": "alder",
+                      "title": "Alder Observatory"
+                    },
+                    {
+                      "id": "birch",
+                      "title": "Birch Observatory"
+                    }
+                  ]
+                }
+              }
+            ],
+            "elapsed_s": 0.030458400025963783,
+            "tool_attempts": 1
+          }
+        }
+      ],
+      "question": "Which observatory do you mean?",
+      "elapsed_s": 0.0597012999933213,
+      "scenario": "ambiguous",
+      "success": true
+    },
+    {
+      "status": "needs_input",
+      "answer": null,
+      "mode": "multi",
+      "backend": "scripted",
+      "decision_calls": 2,
+      "model_calls": 0,
+      "tool_attempts": 1,
+      "input_tokens": null,
+      "output_tokens": null,
+      "usage_complete": true,
+      "history": [
+        {
+          "decision": {
+            "type": "execute",
+            "actions": [
+              {
+                "id": "read",
+                "tool": "read",
+                "args": {
+                  "doc_id": "missing"
+                }
+              }
+            ]
+          },
+          "observation": {
+            "status": "partial",
+            "results": [
+              {
+                "id": "read",
+                "status": "failed",
+                "attempts": 1,
+                "elapsed_s": 0.0303004999877885,
+                "error": "Document 'missing' does not exist"
+              }
+            ],
+            "elapsed_s": 0.03058190003503114,
+            "tool_attempts": 1
+          }
+        }
+      ],
+      "question": "Please provide a valid document ID.",
+      "elapsed_s": 0.05828530003782362,
+      "scenario": "failure",
+      "success": true
+    },
+    {
+      "status": "finished",
+      "answer": "1892",
+      "mode": "multi",
+      "backend": "scripted",
+      "decision_calls": 2,
+      "model_calls": 0,
+      "tool_attempts": 2,
+      "input_tokens": null,
+      "output_tokens": null,
+      "usage_complete": true,
+      "history": [
+        {
+          "decision": {
+            "type": "execute",
+            "actions": [
+              {
+                "id": "search",
+                "tool": "search",
+                "args": {
+                  "query": "Alder Observatory"
+                }
+              },
+              {
+                "id": "read",
+                "tool": "read",
+                "bindings": {
+                  "doc_id": {
+                    "action": "search",
+                    "pointer": "/matches",
+                    "select": "only",
+                    "project": "/id"
+                  }
+                }
+              }
+            ]
+          },
+          "observation": {
+            "status": "complete",
+            "results": [
+              {
+                "id": "search",
+                "status": "succeeded",
+                "attempts": 1,
+                "elapsed_s": 0.03179019992239773,
+                "output": {
+                  "matches": [
+                    {
+                      "id": "alder",
+                      "title": "Alder Observatory"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "read",
+                "status": "succeeded",
+                "attempts": 1,
+                "elapsed_s": 0.06212050002068281,
+                "output": {
+                  "title": "Alder Observatory",
+                  "opened": 1892,
+                  "text": "Alder Observatory is a fictional observatory used in this repository's fixtures. It opened in 1892."
+                }
+              }
+            ],
+            "elapsed_s": 0.062484399997629225,
+            "tool_attempts": 2
+          }
+        }
+      ],
+      "elapsed_s": 0.09164779994171113,
+      "scenario": "dependency",
+      "success": true
+    },
+    {
+      "status": "needs_input",
+      "answer": null,
+      "mode": "parallel",
+      "backend": "scripted",
+      "decision_calls": 2,
+      "model_calls": 0,
+      "tool_attempts": 1,
+      "input_tokens": null,
+      "output_tokens": null,
+      "usage_complete": true,
+      "history": [
+        {
+          "decision": {
+            "type": "execute",
+            "actions": [
+              {
+                "id": "search",
+                "tool": "search",
+                "args": {
+                  "query": "Observatory"
+                }
+              }
+            ]
+          },
+          "observation": {
+            "status": "complete",
+            "results": [
+              {
+                "id": "search",
+                "status": "succeeded",
+                "attempts": 1,
+                "elapsed_s": 0.03184000006876886,
+                "output": {
+                  "matches": [
+                    {
+                      "id": "alder",
+                      "title": "Alder Observatory"
+                    },
+                    {
+                      "id": "birch",
+                      "title": "Birch Observatory"
+                    }
+                  ]
+                }
+              }
+            ],
+            "elapsed_s": 0.03204219997860491,
+            "tool_attempts": 1
+          }
+        }
+      ],
+      "question": "Which observatory do you mean?",
+      "elapsed_s": 0.061395299970172346,
+      "scenario": "ambiguous",
+      "success": true
+    },
+    {
+      "status": "finished",
+      "answer": "Alder Observatory",
+      "mode": "multi",
+      "backend": "scripted",
+      "decision_calls": 2,
+      "model_calls": 0,
+      "tool_attempts": 2,
+      "input_tokens": null,
+      "output_tokens": null,
+      "usage_complete": true,
+      "history": [
+        {
+          "decision": {
+            "type": "execute",
+            "actions": [
+              {
+                "id": "a",
+                "tool": "read",
+                "args": {
+                  "doc_id": "alder"
+                }
+              },
+              {
+                "id": "b",
+                "tool": "read",
+                "args": {
+                  "doc_id": "birch"
+                }
+              }
+            ]
+          },
+          "observation": {
+            "status": "complete",
+            "results": [
+              {
+                "id": "a",
+                "status": "succeeded",
+                "attempts": 1,
+                "elapsed_s": 0.03072140004951507,
+                "output": {
+                  "title": "Alder Observatory",
+                  "opened": 1892,
+                  "text": "Alder Observatory is a fictional observatory used in this repository's fixtures. It opened in 1892."
+                }
+              },
+              {
+                "id": "b",
+                "status": "succeeded",
+                "attempts": 1,
+                "elapsed_s": 0.030660100048407912,
+                "output": {
+                  "title": "Birch Observatory",
+                  "opened": 1910,
+                  "text": "Birch Observatory is a fictional observatory used in this repository's fixtures. It opened in 1910."
+                }
+              }
+            ],
+            "elapsed_s": 0.030999899958260357,
+            "tool_attempts": 2
+          }
+        }
+      ],
+      "elapsed_s": 0.05999139999039471,
+      "scenario": "independent",
+      "success": true
+    },
+    {
+      "status": "needs_input",
+      "answer": null,
+      "mode": "parallel",
+      "backend": "scripted",
+      "decision_calls": 2,
+      "model_calls": 0,
+      "tool_attempts": 1,
+      "input_tokens": null,
+      "output_tokens": null,
+      "usage_complete": true,
+      "history": [
+        {
+          "decision": {
+            "type": "execute",
+            "actions": [
+              {
+                "id": "search",
+                "tool": "search",
+                "args": {
+                  "query": "Observatory"
+                }
+              }
+            ]
+          },
+          "observation": {
+            "status": "complete",
+            "results": [
+              {
+                "id": "search",
+                "status": "succeeded",
+                "attempts": 1,
+                "elapsed_s": 0.031020800000987947,
+                "output": {
+                  "matches": [
+                    {
+                      "id": "alder",
+                      "title": "Alder Observatory"
+                    },
+                    {
+                      "id": "birch",
+                      "title": "Birch Observatory"
+                    }
+                  ]
+                }
+              }
+            ],
+            "elapsed_s": 0.03120119997765869,
+            "tool_attempts": 1
+          }
+        }
+      ],
+      "question": "Which observatory do you mean?",
+      "elapsed_s": 0.059574699960649014,
+      "scenario": "ambiguous",
+      "success": true
+    },
+    {
+      "status": "needs_input",
+      "answer": null,
+      "mode": "parallel",
+      "backend": "scripted",
+      "decision_calls": 2,
+      "model_calls": 0,
+      "tool_attempts": 1,
+      "input_tokens": null,
+      "output_tokens": null,
+      "usage_complete": true,
+      "history": [
+        {
+          "decision": {
+            "type": "execute",
+            "actions": [
+              {
+                "id": "read",
+                "tool": "read",
+                "args": {
+                  "doc_id": "missing"
+                }
+              }
+            ]
+          },
+          "observation": {
+            "status": "partial",
+            "results": [
+              {
+                "id": "read",
+                "status": "failed",
+                "attempts": 1,
+                "elapsed_s": 0.03101599996443838,
+                "error": "Document 'missing' does not exist"
+              }
+            ],
+            "elapsed_s": 0.031212500063702464,
+            "tool_attempts": 1
+          }
+        }
+      ],
+      "question": "Please provide a valid document ID.",
+      "elapsed_s": 0.060457399929873645,
+      "scenario": "failure",
+      "success": true
+    },
+    {
+      "status": "needs_input",
+      "answer": null,
+      "mode": "multi",
+      "backend": "scripted",
+      "decision_calls": 2,
+      "model_calls": 0,
+      "tool_attempts": 1,
+      "input_tokens": null,
+      "output_tokens": null,
+      "usage_complete": true,
+      "history": [
+        {
+          "decision": {
+            "type": "execute",
+            "actions": [
+              {
+                "id": "read",
+                "tool": "read",
+                "args": {
+                  "doc_id": "missing"
+                }
+              }
+            ]
+          },
+          "observation": {
+            "status": "partial",
+            "results": [
+              {
+                "id": "read",
+                "status": "failed",
+                "attempts": 1,
+                "elapsed_s": 0.030542899970896542,
+                "error": "Document 'missing' does not exist"
+              }
+            ],
+            "elapsed_s": 0.030756899970583618,
+            "tool_attempts": 1
+          }
+        }
+      ],
+      "question": "Please provide a valid document ID.",
+      "elapsed_s": 0.058808599947951734,
+      "scenario": "failure",
+      "success": true
+    },
+    {
+      "status": "finished",
+      "answer": "1892",
+      "mode": "single",
+      "backend": "scripted",
+      "decision_calls": 3,
+      "model_calls": 0,
+      "tool_attempts": 2,
+      "input_tokens": null,
+      "output_tokens": null,
+      "usage_complete": true,
+      "history": [
+        {
+          "decision": {
+            "type": "execute",
+            "actions": [
+              {
+                "id": "search",
+                "tool": "search",
+                "args": {
+                  "query": "Alder Observatory"
+                }
+              }
+            ]
+          },
+          "observation": {
+            "status": "complete",
+            "results": [
+              {
+                "id": "search",
+                "status": "succeeded",
+                "attempts": 1,
+                "elapsed_s": 0.031619299901649356,
+                "output": {
+                  "matches": [
+                    {
+                      "id": "alder",
+                      "title": "Alder Observatory"
+                    }
+                  ]
+                }
+              }
+            ],
+            "elapsed_s": 0.03191709995735437,
+            "tool_attempts": 1
+          }
+        },
+        {
+          "decision": {
+            "type": "execute",
+            "actions": [
+              {
+                "id": "read",
+                "tool": "read",
+                "args": {
+                  "doc_id": "alder"
+                }
+              }
+            ]
+          },
+          "observation": {
+            "status": "complete",
+            "results": [
+              {
+                "id": "read",
+                "status": "succeeded",
+                "attempts": 1,
+                "elapsed_s": 0.03180989995598793,
+                "output": {
+                  "title": "Alder Observatory",
+                  "opened": 1892,
+                  "text": "Alder Observatory is a fictional observatory used in this repository's fixtures. It opened in 1892."
+                }
+              }
+            ],
+            "elapsed_s": 0.032065599923953414,
+            "tool_attempts": 1
+          }
+        }
+      ],
+      "elapsed_s": 0.10831819998566061,
+      "scenario": "dependency",
+      "success": true
+    },
+    {
+      "status": "finished",
+      "answer": "1892",
+      "mode": "parallel",
+      "backend": "scripted",
+      "decision_calls": 3,
+      "model_calls": 0,
+      "tool_attempts": 2,
+      "input_tokens": null,
+      "output_tokens": null,
+      "usage_complete": true,
+      "history": [
+        {
+          "decision": {
+            "type": "execute",
+            "actions": [
+              {
+                "id": "search",
+                "tool": "search",
+                "args": {
+                  "query": "Alder Observatory"
+                }
+              }
+            ]
+          },
+          "observation": {
+            "status": "complete",
+            "results": [
+              {
+                "id": "search",
+                "status": "succeeded",
+                "attempts": 1,
+                "elapsed_s": 0.03138949989806861,
+                "output": {
+                  "matches": [
+                    {
+                      "id": "alder",
+                      "title": "Alder Observatory"
+                    }
+                  ]
+                }
+              }
+            ],
+            "elapsed_s": 0.031577899935655296,
+            "tool_attempts": 1
+          }
+        },
+        {
+          "decision": {
+            "type": "execute",
+            "actions": [
+              {
+                "id": "read",
+                "tool": "read",
+                "args": {
+                  "doc_id": "alder"
+                }
+              }
+            ]
+          },
+          "observation": {
+            "status": "complete",
+            "results": [
+              {
+                "id": "read",
+                "status": "succeeded",
+                "attempts": 1,
+                "elapsed_s": 0.030438799993135035,
+                "output": {
+                  "title": "Alder Observatory",
+                  "opened": 1892,
+                  "text": "Alder Observatory is a fictional observatory used in this repository's fixtures. It opened in 1892."
+                }
+              }
+            ],
+            "elapsed_s": 0.030748100019991398,
+            "tool_attempts": 1
+          }
+        }
+      ],
+      "elapsed_s": 0.10746800003107637,
+      "scenario": "dependency",
+      "success": true
+    },
+    {
+      "status": "needs_input",
+      "answer": null,
+      "mode": "multi",
+      "backend": "scripted",
+      "decision_calls": 2,
+      "model_calls": 0,
+      "tool_attempts": 1,
+      "input_tokens": null,
+      "output_tokens": null,
+      "usage_complete": true,
+      "history": [
+        {
+          "decision": {
+            "type": "execute",
+            "actions": [
+              {
+                "id": "read",
+                "tool": "read",
+                "args": {
+                  "doc_id": "missing"
+                }
+              }
+            ]
+          },
+          "observation": {
+            "status": "partial",
+            "results": [
+              {
+                "id": "read",
+                "status": "failed",
+                "attempts": 1,
+                "elapsed_s": 0.03161159995943308,
+                "error": "Document 'missing' does not exist"
+              }
+            ],
+            "elapsed_s": 0.031809299951419234,
+            "tool_attempts": 1
+          }
+        }
+      ],
+      "question": "Please provide a valid document ID.",
+      "elapsed_s": 0.06026319996453822,
+      "scenario": "failure",
+      "success": true
+    },
+    {
+      "status": "finished",
+      "answer": "Alder Observatory",
+      "mode": "single",
+      "backend": "scripted",
+      "decision_calls": 3,
+      "model_calls": 0,
+      "tool_attempts": 2,
+      "input_tokens": null,
+      "output_tokens": null,
+      "usage_complete": true,
+      "history": [
+        {
+          "decision": {
+            "type": "execute",
+            "actions": [
+              {
+                "id": "a",
+                "tool": "read",
+                "args": {
+                  "doc_id": "alder"
+                }
+              }
+            ]
+          },
+          "observation": {
+            "status": "complete",
+            "results": [
+              {
+                "id": "a",
+                "status": "succeeded",
+                "attempts": 1,
+                "elapsed_s": 0.03167659998871386,
+                "output": {
+                  "title": "Alder Observatory",
+                  "opened": 1892,
+                  "text": "Alder Observatory is a fictional observatory used in this repository's fixtures. It opened in 1892."
+                }
+              }
+            ],
+            "elapsed_s": 0.03187379997689277,
+            "tool_attempts": 1
+          }
+        },
+        {
+          "decision": {
+            "type": "execute",
+            "actions": [
+              {
+                "id": "b",
+                "tool": "read",
+                "args": {
+                  "doc_id": "birch"
+                }
+              }
+            ]
+          },
+          "observation": {
+            "status": "complete",
+            "results": [
+              {
+                "id": "b",
+                "status": "succeeded",
+                "attempts": 1,
+                "elapsed_s": 0.029560700058937073,
+                "output": {
+                  "title": "Birch Observatory",
+                  "opened": 1910,
+                  "text": "Birch Observatory is a fictional observatory used in this repository's fixtures. It opened in 1910."
+                }
+              }
+            ],
+            "elapsed_s": 0.029818400042131543,
+            "tool_attempts": 1
+          }
+        }
+      ],
+      "elapsed_s": 0.10733119992073625,
+      "scenario": "independent",
+      "success": true
+    },
+    {
+      "status": "finished",
+      "answer": "Alder Observatory",
+      "mode": "parallel",
+      "backend": "scripted",
+      "decision_calls": 2,
+      "model_calls": 0,
+      "tool_attempts": 2,
+      "input_tokens": null,
+      "output_tokens": null,
+      "usage_complete": true,
+      "history": [
+        {
+          "decision": {
+            "type": "execute",
+            "actions": [
+              {
+                "id": "a",
+                "tool": "read",
+                "args": {
+                  "doc_id": "alder"
+                }
+              },
+              {
+                "id": "b",
+                "tool": "read",
+                "args": {
+                  "doc_id": "birch"
+                }
+              }
+            ]
+          },
+          "observation": {
+            "status": "complete",
+            "results": [
+              {
+                "id": "a",
+                "status": "succeeded",
+                "attempts": 1,
+                "elapsed_s": 0.03073150001000613,
+                "output": {
+                  "title": "Alder Observatory",
+                  "opened": 1892,
+                  "text": "Alder Observatory is a fictional observatory used in this repository's fixtures. It opened in 1892."
+                }
+              },
+              {
+                "id": "b",
+                "status": "succeeded",
+                "attempts": 1,
+                "elapsed_s": 0.030677500064484775,
+                "output": {
+                  "title": "Birch Observatory",
+                  "opened": 1910,
+                  "text": "Birch Observatory is a fictional observatory used in this repository's fixtures. It opened in 1910."
+                }
+              }
+            ],
+            "elapsed_s": 0.031054699909873307,
+            "tool_attempts": 2
+          }
+        }
+      ],
+      "elapsed_s": 0.059158300049602985,
+      "scenario": "independent",
+      "success": true
+    },
+    {
+      "status": "finished",
+      "answer": "1892",
+      "mode": "multi",
+      "backend": "scripted",
+      "decision_calls": 2,
+      "model_calls": 0,
+      "tool_attempts": 2,
+      "input_tokens": null,
+      "output_tokens": null,
+      "usage_complete": true,
+      "history": [
+        {
+          "decision": {
+            "type": "execute",
+            "actions": [
+              {
+                "id": "search",
+                "tool": "search",
+                "args": {
+                  "query": "Alder Observatory"
+                }
+              },
+              {
+                "id": "read",
+                "tool": "read",
+                "bindings": {
+                  "doc_id": {
+                    "action": "search",
+                    "pointer": "/matches",
+                    "select": "only",
+                    "project": "/id"
+                  }
+                }
+              }
+            ]
+          },
+          "observation": {
+            "status": "complete",
+            "results": [
+              {
+                "id": "search",
+                "status": "succeeded",
+                "attempts": 1,
+                "elapsed_s": 0.031047900090925395,
+                "output": {
+                  "matches": [
+                    {
+                      "id": "alder",
+                      "title": "Alder Observatory"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "read",
+                "status": "succeeded",
+                "attempts": 1,
+                "elapsed_s": 0.06214769999496639,
+                "output": {
+                  "title": "Alder Observatory",
+                  "opened": 1892,
+                  "text": "Alder Observatory is a fictional observatory used in this repository's fixtures. It opened in 1892."
+                }
+              }
+            ],
+            "elapsed_s": 0.06247990007977933,
+            "tool_attempts": 2
+          }
+        }
+      ],
+      "elapsed_s": 0.0902554999338463,
+      "scenario": "dependency",
+      "success": true
+    },
+    {
+      "status": "finished",
+      "answer": "Alder Observatory",
+      "mode": "multi",
+      "backend": "scripted",
+      "decision_calls": 2,
+      "model_calls": 0,
+      "tool_attempts": 2,
+      "input_tokens": null,
+      "output_tokens": null,
+      "usage_complete": true,
+      "history": [
+        {
+          "decision": {
+            "type": "execute",
+            "actions": [
+              {
+                "id": "a",
+                "tool": "read",
+                "args": {
+                  "doc_id": "alder"
+                }
+              },
+              {
+                "id": "b",
+                "tool": "read",
+                "args": {
+                  "doc_id": "birch"
+                }
+              }
+            ]
+          },
+          "observation": {
+            "status": "complete",
+            "results": [
+              {
+                "id": "a",
+                "status": "succeeded",
+                "attempts": 1,
+                "elapsed_s": 0.031687599956057966,
+                "output": {
+                  "title": "Alder Observatory",
+                  "opened": 1892,
+                  "text": "Alder Observatory is a fictional observatory used in this repository's fixtures. It opened in 1892."
+                }
+              },
+              {
+                "id": "b",
+                "status": "succeeded",
+                "attempts": 1,
+                "elapsed_s": 0.031650700024329126,
+                "output": {
+                  "title": "Birch Observatory",
+                  "opened": 1910,
+                  "text": "Birch Observatory is a fictional observatory used in this repository's fixtures. It opened in 1910."
+                }
+              }
+            ],
+            "elapsed_s": 0.03192559990566224,
+            "tool_attempts": 2
+          }
+        }
+      ],
+      "elapsed_s": 0.06135080009698868,
+      "scenario": "independent",
+      "success": true
+    },
+    {
+      "status": "finished",
+      "answer": "Alder Observatory",
+      "mode": "multi",
+      "backend": "scripted",
+      "decision_calls": 2,
+      "model_calls": 0,
+      "tool_attempts": 2,
+      "input_tokens": null,
+      "output_tokens": null,
+      "usage_complete": true,
+      "history": [
+        {
+          "decision": {
+            "type": "execute",
+            "actions": [
+              {
+                "id": "a",
+                "tool": "read",
+                "args": {
+                  "doc_id": "alder"
+                }
+              },
+              {
+                "id": "b",
+                "tool": "read",
+                "args": {
+                  "doc_id": "birch"
+                }
+              }
+            ]
+          },
+          "observation": {
+            "status": "complete",
+            "results": [
+              {
+                "id": "a",
+                "status": "succeeded",
+                "attempts": 1,
+                "elapsed_s": 0.03143540001474321,
+                "output": {
+                  "title": "Alder Observatory",
+                  "opened": 1892,
+                  "text": "Alder Observatory is a fictional observatory used in this repository's fixtures. It opened in 1892."
+                }
+              },
+              {
+                "id": "b",
+                "status": "succeeded",
+                "attempts": 1,
+                "elapsed_s": 0.031411100062541664,
+                "output": {
+                  "title": "Birch Observatory",
+                  "opened": 1910,
+                  "text": "Birch Observatory is a fictional observatory used in this repository's fixtures. It opened in 1910."
+                }
+              }
+            ],
+            "elapsed_s": 0.03169770003296435,
+            "tool_attempts": 2
+          }
+        }
+      ],
+      "elapsed_s": 0.06175069999881089,
+      "scenario": "independent",
+      "success": true
+    },
+    {
+      "status": "finished",
+      "answer": "1892",
+      "mode": "single",
+      "backend": "scripted",
+      "decision_calls": 3,
+      "model_calls": 0,
+      "tool_attempts": 2,
+      "input_tokens": null,
+      "output_tokens": null,
+      "usage_complete": true,
+      "history": [
+        {
+          "decision": {
+            "type": "execute",
+            "actions": [
+              {
+                "id": "search",
+                "tool": "search",
+                "args": {
+                  "query": "Alder Observatory"
+                }
+              }
+            ]
+          },
+          "observation": {
+            "status": "complete",
+            "results": [
+              {
+                "id": "search",
+                "status": "succeeded",
+                "attempts": 1,
+                "elapsed_s": 0.030792800011113286,
+                "output": {
+                  "matches": [
+                    {
+                      "id": "alder",
+                      "title": "Alder Observatory"
+                    }
+                  ]
+                }
+              }
+            ],
+            "elapsed_s": 0.031060000066645443,
+            "tool_attempts": 1
+          }
+        },
+        {
+          "decision": {
+            "type": "execute",
+            "actions": [
+              {
+                "id": "read",
+                "tool": "read",
+                "args": {
+                  "doc_id": "alder"
+                }
+              }
+            ]
+          },
+          "observation": {
+            "status": "complete",
+            "results": [
+              {
+                "id": "read",
+                "status": "succeeded",
+                "attempts": 1,
+                "elapsed_s": 0.031209500040858984,
+                "output": {
+                  "title": "Alder Observatory",
+                  "opened": 1892,
+                  "text": "Alder Observatory is a fictional observatory used in this repository's fixtures. It opened in 1892."
+                }
+              }
+            ],
+            "elapsed_s": 0.0314485999988392,
+            "tool_attempts": 1
+          }
+        }
+      ],
+      "elapsed_s": 0.107608100050129,
+      "scenario": "dependency",
+      "success": true
+    },
+    {
+      "status": "finished",
+      "answer": "1892",
+      "mode": "single",
+      "backend": "scripted",
+      "decision_calls": 3,
+      "model_calls": 0,
+      "tool_attempts": 2,
+      "input_tokens": null,
+      "output_tokens": null,
+      "usage_complete": true,
+      "history": [
+        {
+          "decision": {
+            "type": "execute",
+            "actions": [
+              {
+                "id": "search",
+                "tool": "search",
+                "args": {
+                  "query": "Alder Observatory"
+                }
+              }
+            ]
+          },
+          "observation": {
+            "status": "complete",
+            "results": [
+              {
+                "id": "search",
+                "status": "succeeded",
+                "attempts": 1,
+                "elapsed_s": 0.031314700026996434,
+                "output": {
+                  "matches": [
+                    {
+                      "id": "alder",
+                      "title": "Alder Observatory"
+                    }
+                  ]
+                }
+              }
+            ],
+            "elapsed_s": 0.03165749995969236,
+            "tool_attempts": 1
+          }
+        },
+        {
+          "decision": {
+            "type": "execute",
+            "actions": [
+              {
+                "id": "read",
+                "tool": "read",
+                "args": {
+                  "doc_id": "alder"
+                }
+              }
+            ]
+          },
+          "observation": {
+            "status": "complete",
+            "results": [
+              {
+                "id": "read",
+                "status": "succeeded",
+                "attempts": 1,
+                "elapsed_s": 0.030506800045259297,
+                "output": {
+                  "title": "Alder Observatory",
+                  "opened": 1892,
+                  "text": "Alder Observatory is a fictional observatory used in this repository's fixtures. It opened in 1892."
+                }
+              }
+            ],
+            "elapsed_s": 0.030738199944607913,
+            "tool_attempts": 1
+          }
+        }
+      ],
+      "elapsed_s": 0.10689880000427365,
+      "scenario": "dependency",
+      "success": true
+    },
+    {
+      "status": "needs_input",
+      "answer": null,
+      "mode": "parallel",
+      "backend": "scripted",
+      "decision_calls": 2,
+      "model_calls": 0,
+      "tool_attempts": 1,
+      "input_tokens": null,
+      "output_tokens": null,
+      "usage_complete": true,
+      "history": [
+        {
+          "decision": {
+            "type": "execute",
+            "actions": [
+              {
+                "id": "read",
+                "tool": "read",
+                "args": {
+                  "doc_id": "missing"
+                }
+              }
+            ]
+          },
+          "observation": {
+            "status": "partial",
+            "results": [
+              {
+                "id": "read",
+                "status": "failed",
+                "attempts": 1,
+                "elapsed_s": 0.03112120006699115,
+                "error": "Document 'missing' does not exist"
+              }
+            ],
+            "elapsed_s": 0.031326500000432134,
+            "tool_attempts": 1
+          }
+        }
+      ],
+      "question": "Please provide a valid document ID.",
+      "elapsed_s": 0.05950219999067485,
+      "scenario": "failure",
+      "success": true
+    },
+    {
+      "status": "needs_input",
+      "answer": null,
+      "mode": "multi",
+      "backend": "scripted",
+      "decision_calls": 2,
+      "model_calls": 0,
+      "tool_attempts": 1,
+      "input_tokens": null,
+      "output_tokens": null,
+      "usage_complete": true,
+      "history": [
+        {
+          "decision": {
+            "type": "execute",
+            "actions": [
+              {
+                "id": "search",
+                "tool": "search",
+                "args": {
+                  "query": "Observatory"
+                }
+              },
+              {
+                "id": "read",
+                "tool": "read",
+                "bindings": {
+                  "doc_id": {
+                    "action": "search",
+                    "pointer": "/matches",
+                    "select": "only",
+                    "project": "/id"
+                  }
+                }
+              }
+            ]
+          },
+          "observation": {
+            "status": "partial",
+            "results": [
+              {
+                "id": "search",
+                "status": "succeeded",
+                "attempts": 1,
+                "elapsed_s": 0.03158640000037849,
+                "output": {
+                  "matches": [
+                    {
+                      "id": "alder",
+                      "title": "Alder Observatory"
+                    },
+                    {
+                      "id": "birch",
+                      "title": "Birch Observatory"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "read",
+                "status": "needs_reasoning",
+                "attempts": 0,
+                "elapsed_s": 0.031578100053593516,
+                "error": "Expected exactly one candidate, received 2"
+              }
+            ],
+            "elapsed_s": 0.031910300021991134,
+            "tool_attempts": 1
+          }
+        }
+      ],
+      "question": "Which observatory do you mean?",
+      "elapsed_s": 0.059716899995692074,
+      "scenario": "ambiguous",
+      "success": true
+    },
+    {
+      "status": "needs_input",
+      "answer": null,
+      "mode": "multi",
+      "backend": "scripted",
+      "decision_calls": 2,
+      "model_calls": 0,
+      "tool_attempts": 1,
+      "input_tokens": null,
+      "output_tokens": null,
+      "usage_complete": true,
+      "history": [
+        {
+          "decision": {
+            "type": "execute",
+            "actions": [
+              {
+                "id": "read",
+                "tool": "read",
+                "args": {
+                  "doc_id": "missing"
+                }
+              }
+            ]
+          },
+          "observation": {
+            "status": "partial",
+            "results": [
+              {
+                "id": "read",
+                "status": "failed",
+                "attempts": 1,
+                "elapsed_s": 0.03063950000796467,
+                "error": "Document 'missing' does not exist"
+              }
+            ],
+            "elapsed_s": 0.03082930005621165,
+            "tool_attempts": 1
+          }
+        }
+      ],
+      "question": "Please provide a valid document ID.",
+      "elapsed_s": 0.05924009997397661,
+      "scenario": "failure",
+      "success": true
+    },
+    {
+      "status": "needs_input",
+      "answer": null,
+      "mode": "parallel",
+      "backend": "scripted",
+      "decision_calls": 2,
+      "model_calls": 0,
+      "tool_attempts": 1,
+      "input_tokens": null,
+      "output_tokens": null,
+      "usage_complete": true,
+      "history": [
+        {
+          "decision": {
+            "type": "execute",
+            "actions": [
+              {
+                "id": "read",
+                "tool": "read",
+                "args": {
+                  "doc_id": "missing"
+                }
+              }
+            ]
+          },
+          "observation": {
+            "status": "partial",
+            "results": [
+              {
+                "id": "read",
+                "status": "failed",
+                "attempts": 1,
+                "elapsed_s": 0.030713299987837672,
+                "error": "Document 'missing' does not exist"
+              }
+            ],
+            "elapsed_s": 0.030984299955889583,
+            "tool_attempts": 1
+          }
+        }
+      ],
+      "question": "Please provide a valid document ID.",
+      "elapsed_s": 0.06158969993703067,
+      "scenario": "failure",
+      "success": true
+    },
+    {
+      "status": "needs_input",
+      "answer": null,
+      "mode": "single",
+      "backend": "scripted",
+      "decision_calls": 2,
+      "model_calls": 0,
+      "tool_attempts": 1,
+      "input_tokens": null,
+      "output_tokens": null,
+      "usage_complete": true,
+      "history": [
+        {
+          "decision": {
+            "type": "execute",
+            "actions": [
+              {
+                "id": "read",
+                "tool": "read",
+                "args": {
+                  "doc_id": "missing"
+                }
+              }
+            ]
+          },
+          "observation": {
+            "status": "partial",
+            "results": [
+              {
+                "id": "read",
+                "status": "failed",
+                "attempts": 1,
+                "elapsed_s": 0.029976199963130057,
+                "error": "Document 'missing' does not exist"
+              }
+            ],
+            "elapsed_s": 0.03016540000680834,
+            "tool_attempts": 1
+          }
+        }
+      ],
+      "question": "Please provide a valid document ID.",
+      "elapsed_s": 0.05971020006109029,
+      "scenario": "failure",
+      "success": true
+    },
+    {
+      "status": "needs_input",
+      "answer": null,
+      "mode": "multi",
+      "backend": "scripted",
+      "decision_calls": 2,
+      "model_calls": 0,
+      "tool_attempts": 1,
+      "input_tokens": null,
+      "output_tokens": null,
+      "usage_complete": true,
+      "history": [
+        {
+          "decision": {
+            "type": "execute",
+            "actions": [
+              {
+                "id": "read",
+                "tool": "read",
+                "args": {
+                  "doc_id": "missing"
+                }
+              }
+            ]
+          },
+          "observation": {
+            "status": "partial",
+            "results": [
+              {
+                "id": "read",
+                "status": "failed",
+                "attempts": 1,
+                "elapsed_s": 0.03037749999202788,
+                "error": "Document 'missing' does not exist"
+              }
+            ],
+            "elapsed_s": 0.03067360003478825,
+            "tool_attempts": 1
+          }
+        }
+      ],
+      "question": "Please provide a valid document ID.",
+      "elapsed_s": 0.06067909998819232,
+      "scenario": "failure",
+      "success": true
+    },
+    {
+      "status": "finished",
+      "answer": "1892",
+      "mode": "single",
+      "backend": "scripted",
+      "decision_calls": 3,
+      "model_calls": 0,
+      "tool_attempts": 2,
+      "input_tokens": null,
+      "output_tokens": null,
+      "usage_complete": true,
+      "history": [
+        {
+          "decision": {
+            "type": "execute",
+            "actions": [
+              {
+                "id": "search",
+                "tool": "search",
+                "args": {
+                  "query": "Alder Observatory"
+                }
+              }
+            ]
+          },
+          "observation": {
+            "status": "complete",
+            "results": [
+              {
+                "id": "search",
+                "status": "succeeded",
+                "attempts": 1,
+                "elapsed_s": 0.03098060004413128,
+                "output": {
+                  "matches": [
+                    {
+                      "id": "alder",
+                      "title": "Alder Observatory"
+                    }
+                  ]
+                }
+              }
+            ],
+            "elapsed_s": 0.03125460003502667,
+            "tool_attempts": 1
+          }
+        },
+        {
+          "decision": {
+            "type": "execute",
+            "actions": [
+              {
+                "id": "read",
+                "tool": "read",
+                "args": {
+                  "doc_id": "alder"
+                }
+              }
+            ]
+          },
+          "observation": {
+            "status": "complete",
+            "results": [
+              {
+                "id": "read",
+                "status": "succeeded",
+                "attempts": 1,
+                "elapsed_s": 0.03089119994547218,
+                "output": {
+                  "title": "Alder Observatory",
+                  "opened": 1892,
+                  "text": "Alder Observatory is a fictional observatory used in this repository's fixtures. It opened in 1892."
+                }
+              }
+            ],
+            "elapsed_s": 0.031326399999670684,
+            "tool_attempts": 1
+          }
+        }
+      ],
+      "elapsed_s": 0.10764820000622422,
+      "scenario": "dependency",
+      "success": true
+    },
+    {
+      "status": "finished",
+      "answer": "1892",
+      "mode": "multi",
+      "backend": "scripted",
+      "decision_calls": 2,
+      "model_calls": 0,
+      "tool_attempts": 2,
+      "input_tokens": null,
+      "output_tokens": null,
+      "usage_complete": true,
+      "history": [
+        {
+          "decision": {
+            "type": "execute",
+            "actions": [
+              {
+                "id": "search",
+                "tool": "search",
+                "args": {
+                  "query": "Alder Observatory"
+                }
+              },
+              {
+                "id": "read",
+                "tool": "read",
+                "bindings": {
+                  "doc_id": {
+                    "action": "search",
+                    "pointer": "/matches",
+                    "select": "only",
+                    "project": "/id"
+                  }
+                }
+              }
+            ]
+          },
+          "observation": {
+            "status": "complete",
+            "results": [
+              {
+                "id": "search",
+                "status": "succeeded",
+                "attempts": 1,
+                "elapsed_s": 0.030837199999950826,
+                "output": {
+                  "matches": [
+                    {
+                      "id": "alder",
+                      "title": "Alder Observatory"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "read",
+                "status": "succeeded",
+                "attempts": 1,
+                "elapsed_s": 0.06196179997641593,
+                "output": {
+                  "title": "Alder Observatory",
+                  "opened": 1892,
+                  "text": "Alder Observatory is a fictional observatory used in this repository's fixtures. It opened in 1892."
+                }
+              }
+            ],
+            "elapsed_s": 0.06230700004380196,
+            "tool_attempts": 2
+          }
+        }
+      ],
+      "elapsed_s": 0.09162939991801977,
+      "scenario": "dependency",
+      "success": true
+    },
+    {
+      "status": "needs_input",
+      "answer": null,
+      "mode": "single",
+      "backend": "scripted",
+      "decision_calls": 2,
+      "model_calls": 0,
+      "tool_attempts": 1,
+      "input_tokens": null,
+      "output_tokens": null,
+      "usage_complete": true,
+      "history": [
+        {
+          "decision": {
+            "type": "execute",
+            "actions": [
+              {
+                "id": "read",
+                "tool": "read",
+                "args": {
+                  "doc_id": "missing"
+                }
+              }
+            ]
+          },
+          "observation": {
+            "status": "partial",
+            "results": [
+              {
+                "id": "read",
+                "status": "failed",
+                "attempts": 1,
+                "elapsed_s": 0.03026459994725883,
+                "error": "Document 'missing' does not exist"
+              }
+            ],
+            "elapsed_s": 0.030438599991612136,
+            "tool_attempts": 1
+          }
+        }
+      ],
+      "question": "Please provide a valid document ID.",
+      "elapsed_s": 0.058384799980558455,
+      "scenario": "failure",
+      "success": true
+    },
+    {
+      "status": "needs_input",
+      "answer": null,
+      "mode": "single",
+      "backend": "scripted",
+      "decision_calls": 2,
+      "model_calls": 0,
+      "tool_attempts": 1,
+      "input_tokens": null,
+      "output_tokens": null,
+      "usage_complete": true,
+      "history": [
+        {
+          "decision": {
+            "type": "execute",
+            "actions": [
+              {
+                "id": "read",
+                "tool": "read",
+                "args": {
+                  "doc_id": "missing"
+                }
+              }
+            ]
+          },
+          "observation": {
+            "status": "partial",
+            "results": [
+              {
+                "id": "read",
+                "status": "failed",
+                "attempts": 1,
+                "elapsed_s": 0.03293580003082752,
+                "error": "Document 'missing' does not exist"
+              }
+            ],
+            "elapsed_s": 0.033116300008259714,
+            "tool_attempts": 1
+          }
+        }
+      ],
+      "question": "Please provide a valid document ID.",
+      "elapsed_s": 0.061748499982059,
+      "scenario": "failure",
+      "success": true
+    },
+    {
+      "status": "finished",
+      "answer": "1892",
+      "mode": "parallel",
+      "backend": "scripted",
+      "decision_calls": 3,
+      "model_calls": 0,
+      "tool_attempts": 2,
+      "input_tokens": null,
+      "output_tokens": null,
+      "usage_complete": true,
+      "history": [
+        {
+          "decision": {
+            "type": "execute",
+            "actions": [
+              {
+                "id": "search",
+                "tool": "search",
+                "args": {
+                  "query": "Alder Observatory"
+                }
+              }
+            ]
+          },
+          "observation": {
+            "status": "complete",
+            "results": [
+              {
+                "id": "search",
+                "status": "succeeded",
+                "attempts": 1,
+                "elapsed_s": 0.03136079991236329,
+                "output": {
+                  "matches": [
+                    {
+                      "id": "alder",
+                      "title": "Alder Observatory"
+                    }
+                  ]
+                }
+              }
+            ],
+            "elapsed_s": 0.03155399998649955,
+            "tool_attempts": 1
+          }
+        },
+        {
+          "decision": {
+            "type": "execute",
+            "actions": [
+              {
+                "id": "read",
+                "tool": "read",
+                "args": {
+                  "doc_id": "alder"
+                }
+              }
+            ]
+          },
+          "observation": {
+            "status": "complete",
+            "results": [
+              {
+                "id": "read",
+                "status": "succeeded",
+                "attempts": 1,
+                "elapsed_s": 0.03096559992991388,
+                "output": {
+                  "title": "Alder Observatory",
+                  "opened": 1892,
+                  "text": "Alder Observatory is a fictional observatory used in this repository's fixtures. It opened in 1892."
+                }
+              }
+            ],
+            "elapsed_s": 0.031160200014710426,
+            "tool_attempts": 1
+          }
+        }
+      ],
+      "elapsed_s": 0.10668389999773353,
+      "scenario": "dependency",
+      "success": true
+    },
+    {
+      "status": "finished",
+      "answer": "1892",
+      "mode": "parallel",
+      "backend": "scripted",
+      "decision_calls": 3,
+      "model_calls": 0,
+      "tool_attempts": 2,
+      "input_tokens": null,
+      "output_tokens": null,
+      "usage_complete": true,
+      "history": [
+        {
+          "decision": {
+            "type": "execute",
+            "actions": [
+              {
+                "id": "search",
+                "tool": "search",
+                "args": {
+                  "query": "Alder Observatory"
+                }
+              }
+            ]
+          },
+          "observation": {
+            "status": "complete",
+            "results": [
+              {
+                "id": "search",
+                "status": "succeeded",
+                "attempts": 1,
+                "elapsed_s": 0.031204400002025068,
+                "output": {
+                  "matches": [
+                    {
+                      "id": "alder",
+                      "title": "Alder Observatory"
+                    }
+                  ]
+                }
+              }
+            ],
+            "elapsed_s": 0.031496700015850365,
+            "tool_attempts": 1
+          }
+        },
+        {
+          "decision": {
+            "type": "execute",
+            "actions": [
+              {
+                "id": "read",
+                "tool": "read",
+                "args": {
+                  "doc_id": "alder"
+                }
+              }
+            ]
+          },
+          "observation": {
+            "status": "complete",
+            "results": [
+              {
+                "id": "read",
+                "status": "succeeded",
+                "attempts": 1,
+                "elapsed_s": 0.031730699934996665,
+                "output": {
+                  "title": "Alder Observatory",
+                  "opened": 1892,
+                  "text": "Alder Observatory is a fictional observatory used in this repository's fixtures. It opened in 1892."
+                }
+              }
+            ],
+            "elapsed_s": 0.03192079998552799,
+            "tool_attempts": 1
+          }
+        }
+      ],
+      "elapsed_s": 0.10707370005548,
+      "scenario": "dependency",
+      "success": true
+    },
+    {
+      "status": "finished",
+      "answer": "Alder Observatory",
+      "mode": "parallel",
+      "backend": "scripted",
+      "decision_calls": 2,
+      "model_calls": 0,
+      "tool_attempts": 2,
+      "input_tokens": null,
+      "output_tokens": null,
+      "usage_complete": true,
+      "history": [
+        {
+          "decision": {
+            "type": "execute",
+            "actions": [
+              {
+                "id": "a",
+                "tool": "read",
+                "args": {
+                  "doc_id": "alder"
+                }
+              },
+              {
+                "id": "b",
+                "tool": "read",
+                "args": {
+                  "doc_id": "birch"
+                }
+              }
+            ]
+          },
+          "observation": {
+            "status": "complete",
+            "results": [
+              {
+                "id": "a",
+                "status": "succeeded",
+                "attempts": 1,
+                "elapsed_s": 0.031047800090163946,
+                "output": {
+                  "title": "Alder Observatory",
+                  "opened": 1892,
+                  "text": "Alder Observatory is a fictional observatory used in this repository's fixtures. It opened in 1892."
+                }
+              },
+              {
+                "id": "b",
+                "status": "succeeded",
+                "attempts": 1,
+                "elapsed_s": 0.031107000075280666,
+                "output": {
+                  "title": "Birch Observatory",
+                  "opened": 1910,
+                  "text": "Birch Observatory is a fictional observatory used in this repository's fixtures. It opened in 1910."
+                }
+              }
+            ],
+            "elapsed_s": 0.03147980000358075,
+            "tool_attempts": 2
+          }
+        }
+      ],
+      "elapsed_s": 0.06024889997206628,
+      "scenario": "independent",
+      "success": true
+    },
+    {
+      "status": "needs_input",
+      "answer": null,
+      "mode": "single",
+      "backend": "scripted",
+      "decision_calls": 2,
+      "model_calls": 0,
+      "tool_attempts": 1,
+      "input_tokens": null,
+      "output_tokens": null,
+      "usage_complete": true,
+      "history": [
+        {
+          "decision": {
+            "type": "execute",
+            "actions": [
+              {
+                "id": "read",
+                "tool": "read",
+                "args": {
+                  "doc_id": "missing"
+                }
+              }
+            ]
+          },
+          "observation": {
+            "status": "partial",
+            "results": [
+              {
+                "id": "read",
+                "status": "failed",
+                "attempts": 1,
+                "elapsed_s": 0.030846500070765615,
+                "error": "Document 'missing' does not exist"
+              }
+            ],
+            "elapsed_s": 0.031149399932473898,
+            "tool_attempts": 1
+          }
+        }
+      ],
+      "question": "Please provide a valid document ID.",
+      "elapsed_s": 0.06217450008261949,
+      "scenario": "failure",
+      "success": true
+    },
+    {
+      "status": "needs_input",
+      "answer": null,
+      "mode": "parallel",
+      "backend": "scripted",
+      "decision_calls": 2,
+      "model_calls": 0,
+      "tool_attempts": 1,
+      "input_tokens": null,
+      "output_tokens": null,
+      "usage_complete": true,
+      "history": [
+        {
+          "decision": {
+            "type": "execute",
+            "actions": [
+              {
+                "id": "read",
+                "tool": "read",
+                "args": {
+                  "doc_id": "missing"
+                }
+              }
+            ]
+          },
+          "observation": {
+            "status": "partial",
+            "results": [
+              {
+                "id": "read",
+                "status": "failed",
+                "attempts": 1,
+                "elapsed_s": 0.030404899967834353,
+                "error": "Document 'missing' does not exist"
+              }
+            ],
+            "elapsed_s": 0.03059500001836568,
+            "tool_attempts": 1
+          }
+        }
+      ],
+      "question": "Please provide a valid document ID.",
+      "elapsed_s": 0.05922430008649826,
+      "scenario": "failure",
+      "success": true
+    },
+    {
+      "status": "finished",
+      "answer": "1892",
+      "mode": "multi",
+      "backend": "scripted",
+      "decision_calls": 2,
+      "model_calls": 0,
+      "tool_attempts": 2,
+      "input_tokens": null,
+      "output_tokens": null,
+      "usage_complete": true,
+      "history": [
+        {
+          "decision": {
+            "type": "execute",
+            "actions": [
+              {
+                "id": "search",
+                "tool": "search",
+                "args": {
+                  "query": "Alder Observatory"
+                }
+              },
+              {
+                "id": "read",
+                "tool": "read",
+                "bindings": {
+                  "doc_id": {
+                    "action": "search",
+                    "pointer": "/matches",
+                    "select": "only",
+                    "project": "/id"
+                  }
+                }
+              }
+            ]
+          },
+          "observation": {
+            "status": "complete",
+            "results": [
+              {
+                "id": "search",
+                "status": "succeeded",
+                "attempts": 1,
+                "elapsed_s": 0.031490799970924854,
+                "output": {
+                  "matches": [
+                    {
+                      "id": "alder",
+                      "title": "Alder Observatory"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "read",
+                "status": "succeeded",
+                "attempts": 1,
+                "elapsed_s": 0.0629905000096187,
+                "output": {
+                  "title": "Alder Observatory",
+                  "opened": 1892,
+                  "text": "Alder Observatory is a fictional observatory used in this repository's fixtures. It opened in 1892."
+                }
+              }
+            ],
+            "elapsed_s": 0.0633824000833556,
+            "tool_attempts": 2
+          }
+        }
+      ],
+      "elapsed_s": 0.09174990002065897,
+      "scenario": "dependency",
+      "success": true
+    },
+    {
+      "status": "finished",
+      "answer": "1892",
+      "mode": "single",
+      "backend": "scripted",
+      "decision_calls": 3,
+      "model_calls": 0,
+      "tool_attempts": 2,
+      "input_tokens": null,
+      "output_tokens": null,
+      "usage_complete": true,
+      "history": [
+        {
+          "decision": {
+            "type": "execute",
+            "actions": [
+              {
+                "id": "search",
+                "tool": "search",
+                "args": {
+                  "query": "Alder Observatory"
+                }
+              }
+            ]
+          },
+          "observation": {
+            "status": "complete",
+            "results": [
+              {
+                "id": "search",
+                "status": "succeeded",
+                "attempts": 1,
+                "elapsed_s": 0.031246099970303476,
+                "output": {
+                  "matches": [
+                    {
+                      "id": "alder",
+                      "title": "Alder Observatory"
+                    }
+                  ]
+                }
+              }
+            ],
+            "elapsed_s": 0.03146500000730157,
+            "tool_attempts": 1
+          }
+        },
+        {
+          "decision": {
+            "type": "execute",
+            "actions": [
+              {
+                "id": "read",
+                "tool": "read",
+                "args": {
+                  "doc_id": "alder"
+                }
+              }
+            ]
+          },
+          "observation": {
+            "status": "complete",
+            "results": [
+              {
+                "id": "read",
+                "status": "succeeded",
+                "attempts": 1,
+                "elapsed_s": 0.030748400022275746,
+                "output": {
+                  "title": "Alder Observatory",
+                  "opened": 1892,
+                  "text": "Alder Observatory is a fictional observatory used in this repository's fixtures. It opened in 1892."
+                }
+              }
+            ],
+            "elapsed_s": 0.031055200030095875,
+            "tool_attempts": 1
+          }
+        }
+      ],
+      "elapsed_s": 0.10703199997078627,
+      "scenario": "dependency",
+      "success": true
+    },
+    {
+      "status": "needs_input",
+      "answer": null,
+      "mode": "single",
+      "backend": "scripted",
+      "decision_calls": 2,
+      "model_calls": 0,
+      "tool_attempts": 1,
+      "input_tokens": null,
+      "output_tokens": null,
+      "usage_complete": true,
+      "history": [
+        {
+          "decision": {
+            "type": "execute",
+            "actions": [
+              {
+                "id": "search",
+                "tool": "search",
+                "args": {
+                  "query": "Observatory"
+                }
+              }
+            ]
+          },
+          "observation": {
+            "status": "complete",
+            "results": [
+              {
+                "id": "search",
+                "status": "succeeded",
+                "attempts": 1,
+                "elapsed_s": 0.031587200006470084,
+                "output": {
+                  "matches": [
+                    {
+                      "id": "alder",
+                      "title": "Alder Observatory"
+                    },
+                    {
+                      "id": "birch",
+                      "title": "Birch Observatory"
+                    }
+                  ]
+                }
+              }
+            ],
+            "elapsed_s": 0.031871499959379435,
+            "tool_attempts": 1
+          }
+        }
+      ],
+      "question": "Which observatory do you mean?",
+      "elapsed_s": 0.06072359997779131,
+      "scenario": "ambiguous",
+      "success": true
+    },
+    {
+      "status": "needs_input",
+      "answer": null,
+      "mode": "parallel",
+      "backend": "scripted",
+      "decision_calls": 2,
+      "model_calls": 0,
+      "tool_attempts": 1,
+      "input_tokens": null,
+      "output_tokens": null,
+      "usage_complete": true,
+      "history": [
+        {
+          "decision": {
+            "type": "execute",
+            "actions": [
+              {
+                "id": "search",
+                "tool": "search",
+                "args": {
+                  "query": "Observatory"
+                }
+              }
+            ]
+          },
+          "observation": {
+            "status": "complete",
+            "results": [
+              {
+                "id": "search",
+                "status": "succeeded",
+                "attempts": 1,
+                "elapsed_s": 0.03133910009637475,
+                "output": {
+                  "matches": [
+                    {
+                      "id": "alder",
+                      "title": "Alder Observatory"
+                    },
+                    {
+                      "id": "birch",
+                      "title": "Birch Observatory"
+                    }
+                  ]
+                }
+              }
+            ],
+            "elapsed_s": 0.03151779994368553,
+            "tool_attempts": 1
+          }
+        }
+      ],
+      "question": "Which observatory do you mean?",
+      "elapsed_s": 0.059141599922440946,
+      "scenario": "ambiguous",
+      "success": true
+    },
+    {
+      "status": "needs_input",
+      "answer": null,
+      "mode": "single",
+      "backend": "scripted",
+      "decision_calls": 2,
+      "model_calls": 0,
+      "tool_attempts": 1,
+      "input_tokens": null,
+      "output_tokens": null,
+      "usage_complete": true,
+      "history": [
+        {
+          "decision": {
+            "type": "execute",
+            "actions": [
+              {
+                "id": "search",
+                "tool": "search",
+                "args": {
+                  "query": "Observatory"
+                }
+              }
+            ]
+          },
+          "observation": {
+            "status": "complete",
+            "results": [
+              {
+                "id": "search",
+                "status": "succeeded",
+                "attempts": 1,
+                "elapsed_s": 0.03218540002126247,
+                "output": {
+                  "matches": [
+                    {
+                      "id": "alder",
+                      "title": "Alder Observatory"
+                    },
+                    {
+                      "id": "birch",
+                      "title": "Birch Observatory"
+                    }
+                  ]
+                }
+              }
+            ],
+            "elapsed_s": 0.03251239995006472,
+            "tool_attempts": 1
+          }
+        }
+      ],
+      "question": "Which observatory do you mean?",
+      "elapsed_s": 0.06179509998764843,
+      "scenario": "ambiguous",
+      "success": true
+    },
+    {
+      "status": "needs_input",
+      "answer": null,
+      "mode": "multi",
+      "backend": "scripted",
+      "decision_calls": 2,
+      "model_calls": 0,
+      "tool_attempts": 1,
+      "input_tokens": null,
+      "output_tokens": null,
+      "usage_complete": true,
+      "history": [
+        {
+          "decision": {
+            "type": "execute",
+            "actions": [
+              {
+                "id": "search",
+                "tool": "search",
+                "args": {
+                  "query": "Observatory"
+                }
+              },
+              {
+                "id": "read",
+                "tool": "read",
+                "bindings": {
+                  "doc_id": {
+                    "action": "search",
+                    "pointer": "/matches",
+                    "select": "only",
+                    "project": "/id"
+                  }
+                }
+              }
+            ]
+          },
+          "observation": {
+            "status": "partial",
+            "results": [
+              {
+                "id": "search",
+                "status": "succeeded",
+                "attempts": 1,
+                "elapsed_s": 0.0308572999201715,
+                "output": {
+                  "matches": [
+                    {
+                      "id": "alder",
+                      "title": "Alder Observatory"
+                    },
+                    {
+                      "id": "birch",
+                      "title": "Birch Observatory"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "read",
+                "status": "needs_reasoning",
+                "attempts": 0,
+                "elapsed_s": 0.03085559990722686,
+                "error": "Expected exactly one candidate, received 2"
+              }
+            ],
+            "elapsed_s": 0.031134799937717617,
+            "tool_attempts": 1
+          }
+        }
+      ],
+      "question": "Which observatory do you mean?",
+      "elapsed_s": 0.06022089999169111,
+      "scenario": "ambiguous",
+      "success": true
+    },
+    {
+      "status": "finished",
+      "answer": "1892",
+      "mode": "parallel",
+      "backend": "scripted",
+      "decision_calls": 3,
+      "model_calls": 0,
+      "tool_attempts": 2,
+      "input_tokens": null,
+      "output_tokens": null,
+      "usage_complete": true,
+      "history": [
+        {
+          "decision": {
+            "type": "execute",
+            "actions": [
+              {
+                "id": "search",
+                "tool": "search",
+                "args": {
+                  "query": "Alder Observatory"
+                }
+              }
+            ]
+          },
+          "observation": {
+            "status": "complete",
+            "results": [
+              {
+                "id": "search",
+                "status": "succeeded",
+                "attempts": 1,
+                "elapsed_s": 0.031291100080125034,
+                "output": {
+                  "matches": [
+                    {
+                      "id": "alder",
+                      "title": "Alder Observatory"
+                    }
+                  ]
+                }
+              }
+            ],
+            "elapsed_s": 0.03170199994929135,
+            "tool_attempts": 1
+          }
+        },
+        {
+          "decision": {
+            "type": "execute",
+            "actions": [
+              {
+                "id": "read",
+                "tool": "read",
+                "args": {
+                  "doc_id": "alder"
+                }
+              }
+            ]
+          },
+          "observation": {
+            "status": "complete",
+            "results": [
+              {
+                "id": "read",
+                "status": "succeeded",
+                "attempts": 1,
+                "elapsed_s": 0.030909499968402088,
+                "output": {
+                  "title": "Alder Observatory",
+                  "opened": 1892,
+                  "text": "Alder Observatory is a fictional observatory used in this repository's fixtures. It opened in 1892."
+                }
+              }
+            ],
+            "elapsed_s": 0.03118629998061806,
+            "tool_attempts": 1
+          }
+        }
+      ],
+      "elapsed_s": 0.10858820006251335,
+      "scenario": "dependency",
+      "success": true
+    },
+    {
+      "status": "finished",
+      "answer": "Alder Observatory",
+      "mode": "parallel",
+      "backend": "scripted",
+      "decision_calls": 2,
+      "model_calls": 0,
+      "tool_attempts": 2,
+      "input_tokens": null,
+      "output_tokens": null,
+      "usage_complete": true,
+      "history": [
+        {
+          "decision": {
+            "type": "execute",
+            "actions": [
+              {
+                "id": "a",
+                "tool": "read",
+                "args": {
+                  "doc_id": "alder"
+                }
+              },
+              {
+                "id": "b",
+                "tool": "read",
+                "args": {
+                  "doc_id": "birch"
+                }
+              }
+            ]
+          },
+          "observation": {
+            "status": "complete",
+            "results": [
+              {
+                "id": "a",
+                "status": "succeeded",
+                "attempts": 1,
+                "elapsed_s": 0.030732500017620623,
+                "output": {
+                  "title": "Alder Observatory",
+                  "opened": 1892,
+                  "text": "Alder Observatory is a fictional observatory used in this repository's fixtures. It opened in 1892."
+                }
+              },
+              {
+                "id": "b",
+                "status": "succeeded",
+                "attempts": 1,
+                "elapsed_s": 0.03062899992801249,
+                "output": {
+                  "title": "Birch Observatory",
+                  "opened": 1910,
+                  "text": "Birch Observatory is a fictional observatory used in this repository's fixtures. It opened in 1910."
+                }
+              }
+            ],
+            "elapsed_s": 0.031188399996608496,
+            "tool_attempts": 2
+          }
+        }
+      ],
+      "elapsed_s": 0.05976840003859252,
+      "scenario": "independent",
+      "success": true
+    },
+    {
+      "status": "finished",
+      "answer": "Alder Observatory",
+      "mode": "parallel",
+      "backend": "scripted",
+      "decision_calls": 2,
+      "model_calls": 0,
+      "tool_attempts": 2,
+      "input_tokens": null,
+      "output_tokens": null,
+      "usage_complete": true,
+      "history": [
+        {
+          "decision": {
+            "type": "execute",
+            "actions": [
+              {
+                "id": "a",
+                "tool": "read",
+                "args": {
+                  "doc_id": "alder"
+                }
+              },
+              {
+                "id": "b",
+                "tool": "read",
+                "args": {
+                  "doc_id": "birch"
+                }
+              }
+            ]
+          },
+          "observation": {
+            "status": "complete",
+            "results": [
+              {
+                "id": "a",
+                "status": "succeeded",
+                "attempts": 1,
+                "elapsed_s": 0.030881999991834164,
+                "output": {
+                  "title": "Alder Observatory",
+                  "opened": 1892,
+                  "text": "Alder Observatory is a fictional observatory used in this repository's fixtures. It opened in 1892."
+                }
+              },
+              {
+                "id": "b",
+                "status": "succeeded",
+                "attempts": 1,
+                "elapsed_s": 0.03085739992093295,
+                "output": {
+                  "title": "Birch Observatory",
+                  "opened": 1910,
+                  "text": "Birch Observatory is a fictional observatory used in this repository's fixtures. It opened in 1910."
+                }
+              }
+            ],
+            "elapsed_s": 0.031155999982729554,
+            "tool_attempts": 2
+          }
+        }
+      ],
+      "elapsed_s": 0.061396999983116984,
+      "scenario": "independent",
+      "success": true
+    },
+    {
+      "status": "needs_input",
+      "answer": null,
+      "mode": "parallel",
+      "backend": "scripted",
+      "decision_calls": 2,
+      "model_calls": 0,
+      "tool_attempts": 1,
+      "input_tokens": null,
+      "output_tokens": null,
+      "usage_complete": true,
+      "history": [
+        {
+          "decision": {
+            "type": "execute",
+            "actions": [
+              {
+                "id": "read",
+                "tool": "read",
+                "args": {
+                  "doc_id": "missing"
+                }
+              }
+            ]
+          },
+          "observation": {
+            "status": "partial",
+            "results": [
+              {
+                "id": "read",
+                "status": "failed",
+                "attempts": 1,
+                "elapsed_s": 0.031148300040513277,
+                "error": "Document 'missing' does not exist"
+              }
+            ],
+            "elapsed_s": 0.03134680003859103,
+            "tool_attempts": 1
+          }
+        }
+      ],
+      "question": "Please provide a valid document ID.",
+      "elapsed_s": 0.05969649995677173,
+      "scenario": "failure",
+      "success": true
+    },
+    {
+      "status": "needs_input",
+      "answer": null,
+      "mode": "single",
+      "backend": "scripted",
+      "decision_calls": 2,
+      "model_calls": 0,
+      "tool_attempts": 1,
+      "input_tokens": null,
+      "output_tokens": null,
+      "usage_complete": true,
+      "history": [
+        {
+          "decision": {
+            "type": "execute",
+            "actions": [
+              {
+                "id": "search",
+                "tool": "search",
+                "args": {
+                  "query": "Observatory"
+                }
+              }
+            ]
+          },
+          "observation": {
+            "status": "complete",
+            "results": [
+              {
+                "id": "search",
+                "status": "succeeded",
+                "attempts": 1,
+                "elapsed_s": 0.03071540000382811,
+                "output": {
+                  "matches": [
+                    {
+                      "id": "alder",
+                      "title": "Alder Observatory"
+                    },
+                    {
+                      "id": "birch",
+                      "title": "Birch Observatory"
+                    }
+                  ]
+                }
+              }
+            ],
+            "elapsed_s": 0.030909599969163537,
+            "tool_attempts": 1
+          }
+        }
+      ],
+      "question": "Which observatory do you mean?",
+      "elapsed_s": 0.0595888999523595,
+      "scenario": "ambiguous",
+      "success": true
+    },
+    {
+      "status": "needs_input",
+      "answer": null,
+      "mode": "parallel",
+      "backend": "scripted",
+      "decision_calls": 2,
+      "model_calls": 0,
+      "tool_attempts": 1,
+      "input_tokens": null,
+      "output_tokens": null,
+      "usage_complete": true,
+      "history": [
+        {
+          "decision": {
+            "type": "execute",
+            "actions": [
+              {
+                "id": "search",
+                "tool": "search",
+                "args": {
+                  "query": "Observatory"
+                }
+              }
+            ]
+          },
+          "observation": {
+            "status": "complete",
+            "results": [
+              {
+                "id": "search",
+                "status": "succeeded",
+                "attempts": 1,
+                "elapsed_s": 0.030951100052334368,
+                "output": {
+                  "matches": [
+                    {
+                      "id": "alder",
+                      "title": "Alder Observatory"
+                    },
+                    {
+                      "id": "birch",
+                      "title": "Birch Observatory"
+                    }
+                  ]
+                }
+              }
+            ],
+            "elapsed_s": 0.031130299903452396,
+            "tool_attempts": 1
+          }
+        }
+      ],
+      "question": "Which observatory do you mean?",
+      "elapsed_s": 0.06027599994558841,
+      "scenario": "ambiguous",
+      "success": true
+    },
+    {
+      "status": "finished",
+      "answer": "Alder Observatory",
+      "mode": "parallel",
+      "backend": "scripted",
+      "decision_calls": 2,
+      "model_calls": 0,
+      "tool_attempts": 2,
+      "input_tokens": null,
+      "output_tokens": null,
+      "usage_complete": true,
+      "history": [
+        {
+          "decision": {
+            "type": "execute",
+            "actions": [
+              {
+                "id": "a",
+                "tool": "read",
+                "args": {
+                  "doc_id": "alder"
+                }
+              },
+              {
+                "id": "b",
+                "tool": "read",
+                "args": {
+                  "doc_id": "birch"
+                }
+              }
+            ]
+          },
+          "observation": {
+            "status": "complete",
+            "results": [
+              {
+                "id": "a",
+                "status": "succeeded",
+                "attempts": 1,
+                "elapsed_s": 0.030545899993740022,
+                "output": {
+                  "title": "Alder Observatory",
+                  "opened": 1892,
+                  "text": "Alder Observatory is a fictional observatory used in this repository's fixtures. It opened in 1892."
+                }
+              },
+              {
+                "id": "b",
+                "status": "succeeded",
+                "attempts": 1,
+                "elapsed_s": 0.03051209996920079,
+                "output": {
+                  "title": "Birch Observatory",
+                  "opened": 1910,
+                  "text": "Birch Observatory is a fictional observatory used in this repository's fixtures. It opened in 1910."
+                }
+              }
+            ],
+            "elapsed_s": 0.03078909998293966,
+            "tool_attempts": 2
+          }
+        }
+      ],
+      "elapsed_s": 0.06026400008704513,
+      "scenario": "independent",
+      "success": true
+    },
+    {
+      "status": "needs_input",
+      "answer": null,
+      "mode": "parallel",
+      "backend": "scripted",
+      "decision_calls": 2,
+      "model_calls": 0,
+      "tool_attempts": 1,
+      "input_tokens": null,
+      "output_tokens": null,
+      "usage_complete": true,
+      "history": [
+        {
+          "decision": {
+            "type": "execute",
+            "actions": [
+              {
+                "id": "search",
+                "tool": "search",
+                "args": {
+                  "query": "Observatory"
+                }
+              }
+            ]
+          },
+          "observation": {
+            "status": "complete",
+            "results": [
+              {
+                "id": "search",
+                "status": "succeeded",
+                "attempts": 1,
+                "elapsed_s": 0.030105100013315678,
+                "output": {
+                  "matches": [
+                    {
+                      "id": "alder",
+                      "title": "Alder Observatory"
+                    },
+                    {
+                      "id": "birch",
+                      "title": "Birch Observatory"
+                    }
+                  ]
+                }
+              }
+            ],
+            "elapsed_s": 0.03038030001334846,
+            "tool_attempts": 1
+          }
+        }
+      ],
+      "question": "Which observatory do you mean?",
+      "elapsed_s": 0.0601176000200212,
+      "scenario": "ambiguous",
+      "success": true
+    },
+    {
+      "status": "needs_input",
+      "answer": null,
+      "mode": "multi",
+      "backend": "scripted",
+      "decision_calls": 2,
+      "model_calls": 0,
+      "tool_attempts": 1,
+      "input_tokens": null,
+      "output_tokens": null,
+      "usage_complete": true,
+      "history": [
+        {
+          "decision": {
+            "type": "execute",
+            "actions": [
+              {
+                "id": "search",
+                "tool": "search",
+                "args": {
+                  "query": "Observatory"
+                }
+              },
+              {
+                "id": "read",
+                "tool": "read",
+                "bindings": {
+                  "doc_id": {
+                    "action": "search",
+                    "pointer": "/matches",
+                    "select": "only",
+                    "project": "/id"
+                  }
+                }
+              }
+            ]
+          },
+          "observation": {
+            "status": "partial",
+            "results": [
+              {
+                "id": "search",
+                "status": "succeeded",
+                "attempts": 1,
+                "elapsed_s": 0.031234800000675023,
+                "output": {
+                  "matches": [
+                    {
+                      "id": "alder",
+                      "title": "Alder Observatory"
+                    },
+                    {
+                      "id": "birch",
+                      "title": "Birch Observatory"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "read",
+                "status": "needs_reasoning",
+                "attempts": 0,
+                "elapsed_s": 0.03122770006302744,
+                "error": "Expected exactly one candidate, received 2"
+              }
+            ],
+            "elapsed_s": 0.03154690004885197,
+            "tool_attempts": 1
+          }
+        }
+      ],
+      "question": "Which observatory do you mean?",
+      "elapsed_s": 0.06094730005133897,
+      "scenario": "ambiguous",
+      "success": true
+    },
+    {
+      "status": "finished",
+      "answer": "1892",
+      "mode": "parallel",
+      "backend": "scripted",
+      "decision_calls": 3,
+      "model_calls": 0,
+      "tool_attempts": 2,
+      "input_tokens": null,
+      "output_tokens": null,
+      "usage_complete": true,
+      "history": [
+        {
+          "decision": {
+            "type": "execute",
+            "actions": [
+              {
+                "id": "search",
+                "tool": "search",
+                "args": {
+                  "query": "Alder Observatory"
+                }
+              }
+            ]
+          },
+          "observation": {
+            "status": "complete",
+            "results": [
+              {
+                "id": "search",
+                "status": "succeeded",
+                "attempts": 1,
+                "elapsed_s": 0.030889099929481745,
+                "output": {
+                  "matches": [
+                    {
+                      "id": "alder",
+                      "title": "Alder Observatory"
+                    }
+                  ]
+                }
+              }
+            ],
+            "elapsed_s": 0.031108199968002737,
+            "tool_attempts": 1
+          }
+        },
+        {
+          "decision": {
+            "type": "execute",
+            "actions": [
+              {
+                "id": "read",
+                "tool": "read",
+                "args": {
+                  "doc_id": "alder"
+                }
+              }
+            ]
+          },
+          "observation": {
+            "status": "complete",
+            "results": [
+              {
+                "id": "read",
+                "status": "succeeded",
+                "attempts": 1,
+                "elapsed_s": 0.03029430005699396,
+                "output": {
+                  "title": "Alder Observatory",
+                  "opened": 1892,
+                  "text": "Alder Observatory is a fictional observatory used in this repository's fixtures. It opened in 1892."
+                }
+              }
+            ],
+            "elapsed_s": 0.030491599929518998,
+            "tool_attempts": 1
+          }
+        }
+      ],
+      "elapsed_s": 0.10816270008217543,
+      "scenario": "dependency",
+      "success": true
+    },
+    {
+      "status": "finished",
+      "answer": "Alder Observatory",
+      "mode": "multi",
+      "backend": "scripted",
+      "decision_calls": 2,
+      "model_calls": 0,
+      "tool_attempts": 2,
+      "input_tokens": null,
+      "output_tokens": null,
+      "usage_complete": true,
+      "history": [
+        {
+          "decision": {
+            "type": "execute",
+            "actions": [
+              {
+                "id": "a",
+                "tool": "read",
+                "args": {
+                  "doc_id": "alder"
+                }
+              },
+              {
+                "id": "b",
+                "tool": "read",
+                "args": {
+                  "doc_id": "birch"
+                }
+              }
+            ]
+          },
+          "observation": {
+            "status": "complete",
+            "results": [
+              {
+                "id": "a",
+                "status": "succeeded",
+                "attempts": 1,
+                "elapsed_s": 0.03141920000780374,
+                "output": {
+                  "title": "Alder Observatory",
+                  "opened": 1892,
+                  "text": "Alder Observatory is a fictional observatory used in this repository's fixtures. It opened in 1892."
+                }
+              },
+              {
+                "id": "b",
+                "status": "succeeded",
+                "attempts": 1,
+                "elapsed_s": 0.03139260003808886,
+                "output": {
+                  "title": "Birch Observatory",
+                  "opened": 1910,
+                  "text": "Birch Observatory is a fictional observatory used in this repository's fixtures. It opened in 1910."
+                }
+              }
+            ],
+            "elapsed_s": 0.03168699995148927,
+            "tool_attempts": 2
+          }
+        }
+      ],
+      "elapsed_s": 0.06104079994838685,
+      "scenario": "independent",
+      "success": true
+    },
+    {
+      "status": "finished",
+      "answer": "Alder Observatory",
+      "mode": "multi",
+      "backend": "scripted",
+      "decision_calls": 2,
+      "model_calls": 0,
+      "tool_attempts": 2,
+      "input_tokens": null,
+      "output_tokens": null,
+      "usage_complete": true,
+      "history": [
+        {
+          "decision": {
+            "type": "execute",
+            "actions": [
+              {
+                "id": "a",
+                "tool": "read",
+                "args": {
+                  "doc_id": "alder"
+                }
+              },
+              {
+                "id": "b",
+                "tool": "read",
+                "args": {
+                  "doc_id": "birch"
+                }
+              }
+            ]
+          },
+          "observation": {
+            "status": "complete",
+            "results": [
+              {
+                "id": "a",
+                "status": "succeeded",
+                "attempts": 1,
+                "elapsed_s": 0.030318900011479855,
+                "output": {
+                  "title": "Alder Observatory",
+                  "opened": 1892,
+                  "text": "Alder Observatory is a fictional observatory used in this repository's fixtures. It opened in 1892."
+                }
+              },
+              {
+                "id": "b",
+                "status": "succeeded",
+                "attempts": 1,
+                "elapsed_s": 0.03028569999150932,
+                "output": {
+                  "title": "Birch Observatory",
+                  "opened": 1910,
+                  "text": "Birch Observatory is a fictional observatory used in this repository's fixtures. It opened in 1910."
+                }
+              }
+            ],
+            "elapsed_s": 0.030548000009730458,
+            "tool_attempts": 2
+          }
+        }
+      ],
+      "elapsed_s": 0.05994170007761568,
+      "scenario": "independent",
+      "success": true
+    },
+    {
+      "status": "needs_input",
+      "answer": null,
+      "mode": "multi",
+      "backend": "scripted",
+      "decision_calls": 2,
+      "model_calls": 0,
+      "tool_attempts": 1,
+      "input_tokens": null,
+      "output_tokens": null,
+      "usage_complete": true,
+      "history": [
+        {
+          "decision": {
+            "type": "execute",
+            "actions": [
+              {
+                "id": "search",
+                "tool": "search",
+                "args": {
+                  "query": "Observatory"
+                }
+              },
+              {
+                "id": "read",
+                "tool": "read",
+                "bindings": {
+                  "doc_id": {
+                    "action": "search",
+                    "pointer": "/matches",
+                    "select": "only",
+                    "project": "/id"
+                  }
+                }
+              }
+            ]
+          },
+          "observation": {
+            "status": "partial",
+            "results": [
+              {
+                "id": "search",
+                "status": "succeeded",
+                "attempts": 1,
+                "elapsed_s": 0.03040980000514537,
+                "output": {
+                  "matches": [
+                    {
+                      "id": "alder",
+                      "title": "Alder Observatory"
+                    },
+                    {
+                      "id": "birch",
+                      "title": "Birch Observatory"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "read",
+                "status": "needs_reasoning",
+                "attempts": 0,
+                "elapsed_s": 0.03038040001410991,
+                "error": "Expected exactly one candidate, received 2"
+              }
+            ],
+            "elapsed_s": 0.03089109994471073,
+            "tool_attempts": 1
+          }
+        }
+      ],
+      "question": "Which observatory do you mean?",
+      "elapsed_s": 0.06054020009469241,
+      "scenario": "ambiguous",
+      "success": true
+    },
+    {
+      "status": "finished",
+      "answer": "Alder Observatory",
+      "mode": "single",
+      "backend": "scripted",
+      "decision_calls": 3,
+      "model_calls": 0,
+      "tool_attempts": 2,
+      "input_tokens": null,
+      "output_tokens": null,
+      "usage_complete": true,
+      "history": [
+        {
+          "decision": {
+            "type": "execute",
+            "actions": [
+              {
+                "id": "a",
+                "tool": "read",
+                "args": {
+                  "doc_id": "alder"
+                }
+              }
+            ]
+          },
+          "observation": {
+            "status": "complete",
+            "results": [
+              {
+                "id": "a",
+                "status": "succeeded",
+                "attempts": 1,
+                "elapsed_s": 0.03197579993866384,
+                "output": {
+                  "title": "Alder Observatory",
+                  "opened": 1892,
+                  "text": "Alder Observatory is a fictional observatory used in this repository's fixtures. It opened in 1892."
+                }
+              }
+            ],
+            "elapsed_s": 0.032157299923710525,
+            "tool_attempts": 1
+          }
+        },
+        {
+          "decision": {
+            "type": "execute",
+            "actions": [
+              {
+                "id": "b",
+                "tool": "read",
+                "args": {
+                  "doc_id": "birch"
+                }
+              }
+            ]
+          },
+          "observation": {
+            "status": "complete",
+            "results": [
+              {
+                "id": "b",
+                "status": "succeeded",
+                "attempts": 1,
+                "elapsed_s": 0.03359390003606677,
+                "output": {
+                  "title": "Birch Observatory",
+                  "opened": 1910,
+                  "text": "Birch Observatory is a fictional observatory used in this repository's fixtures. It opened in 1910."
+                }
+              }
+            ],
+            "elapsed_s": 0.03392149996943772,
+            "tool_attempts": 1
+          }
+        }
+      ],
+      "elapsed_s": 0.1092318999581039,
+      "scenario": "independent",
+      "success": true
+    },
+    {
+      "status": "finished",
+      "answer": "Alder Observatory",
+      "mode": "single",
+      "backend": "scripted",
+      "decision_calls": 3,
+      "model_calls": 0,
+      "tool_attempts": 2,
+      "input_tokens": null,
+      "output_tokens": null,
+      "usage_complete": true,
+      "history": [
+        {
+          "decision": {
+            "type": "execute",
+            "actions": [
+              {
+                "id": "a",
+                "tool": "read",
+                "args": {
+                  "doc_id": "alder"
+                }
+              }
+            ]
+          },
+          "observation": {
+            "status": "complete",
+            "results": [
+              {
+                "id": "a",
+                "status": "succeeded",
+                "attempts": 1,
+                "elapsed_s": 0.028870799927972257,
+                "output": {
+                  "title": "Alder Observatory",
+                  "opened": 1892,
+                  "text": "Alder Observatory is a fictional observatory used in this repository's fixtures. It opened in 1892."
+                }
+              }
+            ],
+            "elapsed_s": 0.029877700028009713,
+            "tool_attempts": 1
+          }
+        },
+        {
+          "decision": {
+            "type": "execute",
+            "actions": [
+              {
+                "id": "b",
+                "tool": "read",
+                "args": {
+                  "doc_id": "birch"
+                }
+              }
+            ]
+          },
+          "observation": {
+            "status": "complete",
+            "results": [
+              {
+                "id": "b",
+                "status": "succeeded",
+                "attempts": 1,
+                "elapsed_s": 0.031419800012372434,
+                "output": {
+                  "title": "Birch Observatory",
+                  "opened": 1910,
+                  "text": "Birch Observatory is a fictional observatory used in this repository's fixtures. It opened in 1910."
+                }
+              }
+            ],
+            "elapsed_s": 0.03161559998989105,
+            "tool_attempts": 1
+          }
+        }
+      ],
+      "elapsed_s": 0.10508210002444685,
+      "scenario": "independent",
+      "success": true
+    },
+    {
+      "status": "needs_input",
+      "answer": null,
+      "mode": "single",
+      "backend": "scripted",
+      "decision_calls": 2,
+      "model_calls": 0,
+      "tool_attempts": 1,
+      "input_tokens": null,
+      "output_tokens": null,
+      "usage_complete": true,
+      "history": [
+        {
+          "decision": {
+            "type": "execute",
+            "actions": [
+              {
+                "id": "search",
+                "tool": "search",
+                "args": {
+                  "query": "Observatory"
+                }
+              }
+            ]
+          },
+          "observation": {
+            "status": "complete",
+            "results": [
+              {
+                "id": "search",
+                "status": "succeeded",
+                "attempts": 1,
+                "elapsed_s": 0.030400600051507354,
+                "output": {
+                  "matches": [
+                    {
+                      "id": "alder",
+                      "title": "Alder Observatory"
+                    },
+                    {
+                      "id": "birch",
+                      "title": "Birch Observatory"
+                    }
+                  ]
+                }
+              }
+            ],
+            "elapsed_s": 0.03059660003054887,
+            "tool_attempts": 1
+          }
+        }
+      ],
+      "question": "Which observatory do you mean?",
+      "elapsed_s": 0.06101389997638762,
+      "scenario": "ambiguous",
+      "success": true
+    }
+  ]
+}
